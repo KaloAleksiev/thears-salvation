@@ -26,6 +26,13 @@ public class PlayerMovement : MonoBehaviour {
         if (IsGrounded()) {
             jumpCounter = 0;
         }
+
+        // make character face left or right depending on key pressed
+        if (mx > 0f) {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        } else if (mx < 0f) {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 
     private void FixedUpdate() {
