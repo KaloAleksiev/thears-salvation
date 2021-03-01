@@ -13,11 +13,18 @@ public class PlayerMovement : MonoBehaviour {
 
     private float mx; // movement on the x-axis
 
+    private int jumpCounter = 0;
+
     private void Update() {
         mx = Input.GetAxis("Horizontal"); // set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)
 
-        if (Input.GetButtonDown("Jump") && IsGrounded()) {
+        if (Input.GetButtonDown("Jump") && jumpCounter < 1) {
             Jump();
+            jumpCounter++;
+        }
+
+        if (IsGrounded()) {
+            jumpCounter = 0;
         }
     }
 
