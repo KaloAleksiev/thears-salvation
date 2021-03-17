@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7490863036447023566}
   m_Layer: 0
   m_Name: Bandit
-  m_TagString: Enemy
+  m_TagString: Bandit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,6 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4141e1c285fab034198f0432a0d16f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathClicks: 1
+  clicksCounter: 0
+  soulOrbPrefab: {fileID: 0}
 --- !u!1 &1144217152258690414
 GameObject:
   m_ObjectHideFlags: 0

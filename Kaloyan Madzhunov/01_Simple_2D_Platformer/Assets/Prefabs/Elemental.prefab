@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5479576996832386149}
   m_Layer: 0
   m_Name: Elemental
-  m_TagString: Enemy
+  m_TagString: Elemental
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,3 +197,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathClicks: 3
   clicksCounter: 0
+  soulOrbPrefab: {fileID: 7828191802980023156, guid: 39aa94b7ab6ad26469a24ecc3857db87,
+    type: 3}
