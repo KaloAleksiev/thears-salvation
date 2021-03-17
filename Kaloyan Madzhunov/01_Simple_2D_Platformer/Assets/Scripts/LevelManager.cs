@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 public class LevelManager : MonoBehaviour {
@@ -13,6 +14,7 @@ public class LevelManager : MonoBehaviour {
 
     [Header("Soul Orbs")]
     public int soulOrbs = 0;
+    public Text soulOrbsUI;
 
     private void Awake() {
         instance = this;
@@ -25,5 +27,6 @@ public class LevelManager : MonoBehaviour {
 
     public void IncreaseSoulOrbs(int amount) {
         soulOrbs += amount;
+        soulOrbsUI.text = "Soul Orbs: " + amount;
     }
 }
