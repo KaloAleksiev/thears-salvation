@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Update() {
         mx = Input.GetAxis("Horizontal"); //set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)
 
-        rotateCharacter();
+        RotateCharacter();
 
         if (Input.GetButtonDown("Jump")) {
             Jump();
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    private void rotateCharacter() {
+    private void RotateCharacter() {
         //make character face left or right depending on key pressed
         if (mx > 0f) {
             isFacingRight = true;
