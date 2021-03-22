@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour {
-    public int deathClicks = 1;
-    public int clicksCounter = 0;
-    public GameObject soulOrbPrefab;
+public class EnemyHealth : HealthManager {
+    public EnemyHealth(int _maxHealth) : base(_maxHealth) { }
+
+    public GameObject itemPrefab;
 
     private void OnMouseDown() {
-        if (++clicksCounter == deathClicks) {
-            if (gameObject.CompareTag("Elemental")) {
-                Instantiate(soulOrbPrefab, transform.position, Quaternion.identity);
-            }
+        TakeDamage(Constants.BASIC_SWORD_DMG);
 
-            Destroy(gameObject);
+        if (currentHealth <= 0) {
+            Die();
         }
+    }
+
+    private void Die() {
+        Instantiate(itemPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

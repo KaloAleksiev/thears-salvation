@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : HealthManager {
+    public PlayerHealth() : base(Constants.PLAYER_HP) { }
+
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Bandit")) {
-            LevelManager.instance.TakeDamage(25);
+            TakeDamage(Constants.BANDIT_DMG);
         } else if (collision.gameObject.CompareTag("Elemental")) {
-            LevelManager.instance.TakeDamage(50);
+            TakeDamage(Constants.ELEMENTAL_DMG);
         }
 
-        if (LevelManager.instance.currentHealth <= 0) {
+        if (currentHealth <= 0) {
+            ResetHealthBar();
             Destroy(gameObject);
             LevelManager.instance.Respawn();
         }
