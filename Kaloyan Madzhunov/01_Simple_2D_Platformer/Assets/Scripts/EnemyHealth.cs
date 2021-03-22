@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDeath : MonoBehaviour {
+public class EnemyHealth : MonoBehaviour {
     public int deathClicks = 1;
     public int clicksCounter = 0;
     public GameObject soulOrbPrefab;
