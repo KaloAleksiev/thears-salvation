@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour {
 
     public CinemachineVirtualCameraBase cameraBase;
 
+    public HealthBar playerHealth;
+
     [Header("Soul Orbs")]
     public int soulOrbs = 0;
     public Text soulOrbsUI;
@@ -22,6 +24,9 @@ public class LevelManager : MonoBehaviour {
 
     public void Respawn() {
         GameObject player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth.healthBar = this.playerHealth;
+
         cameraBase.Follow = player.transform;
     }
 

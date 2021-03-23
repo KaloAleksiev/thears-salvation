@@ -2363,7 +2363,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 1740254751052738419, guid: 492b2699468168c48b645950cfb4016b,
     type: 3}
   cameraBase: {fileID: 1222261928}
-  healthBar: {fileID: 1286703792}
+  playerHealth: {fileID: 1286703792}
   soulOrbs: 0
   soulOrbsUI: {fileID: 35619392}
 --- !u!4 &1787025525
