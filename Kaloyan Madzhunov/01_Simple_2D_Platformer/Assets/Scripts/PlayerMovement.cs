@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     [Header("Object References")]
@@ -11,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 
     [Header("Horizontal Movement")]
     public float movementSpeed = 10f;
+    public bool isFacingRight = true;
 
     [Header("Vertical Movement")]
     public float jumpForce = 20f;
@@ -27,7 +25,6 @@ public class PlayerMovement : MonoBehaviour {
 
     /* Private Variables */
     private float mx; //movement on the x-axis
-    private bool isFacingRight = true;
 
     private int jumpCounter = 0;
     private float jumpCoolDown;
@@ -40,7 +37,12 @@ public class PlayerMovement : MonoBehaviour {
     private void Update() {
         mx = Input.GetAxis("Horizontal"); //set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)
 
-        RotateCharacter();
+        //make character face left or right depending on key pressed
+        if (mx > 0f) {
+            RotateRight();
+        } else if (mx < 0f) {
+            RotateLeft();
+        }
 
         if (Input.GetButtonDown("Jump")) {
             Jump();
@@ -54,6 +56,16 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = new Vector2(mx * movementSpeed, rb.velocity.y);
 
         CheckWallHit();
+    }
+
+    public void RotateLeft() {
+        isFacingRight = false;
+        transform.localScale = new Vector3(-1f, 1f, 1f);
+    }
+
+    public void RotateRight() {
+        isFacingRight = true;
+        transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     private void CheckWallHit() {
@@ -101,17 +113,6 @@ public class PlayerMovement : MonoBehaviour {
         if (isGrounded || jumpCounter < extraJumps || isWallSliding) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpCounter++;
-        }
-    }
-
-    private void RotateCharacter() {
-        //make character face left or right depending on key pressed
-        if (mx > 0f) {
-            isFacingRight = true;
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        } else if (mx < 0f) {
-            isFacingRight = false;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 }

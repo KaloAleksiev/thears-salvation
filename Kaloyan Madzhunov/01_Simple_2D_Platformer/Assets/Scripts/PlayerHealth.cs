@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
     public Health health;
@@ -12,14 +11,7 @@ public class PlayerHealth : MonoBehaviour {
         }
 
         if (health.currentHealth == 0) {
-            StartCoroutine(Die());
+            StartCoroutine(PlayerManager.instance.Respawn());
         }
-    }
-
-    private IEnumerator Die() {
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(1);
-        LevelManager.instance.Respawn(gameObject);
-        health.ResetHealth();
     }
 }

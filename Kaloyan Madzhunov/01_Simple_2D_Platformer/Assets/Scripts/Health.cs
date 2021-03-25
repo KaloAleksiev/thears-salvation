@@ -7,12 +7,7 @@ public class Health : MonoBehaviour {
     public UnityEvent healthChange;
 
     private void Start() {
-        ResetHealth();
-    }
-
-    public void ResetHealth() {
         currentHealth = maxHealth;
-        healthChange.Invoke();
     }
 
     public void TakeDamage(int damage) {
