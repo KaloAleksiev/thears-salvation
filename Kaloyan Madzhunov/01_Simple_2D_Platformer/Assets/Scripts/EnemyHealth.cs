@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnemyHealth : HealthManager {
-    public EnemyHealth(int _maxHealth) : base(_maxHealth) { }
-
+public class EnemyHealth : MonoBehaviour {
+    public Health health;
     public GameObject itemPrefab;
 
     private void OnMouseDown() {
-        TakeDamage(Constants.BASIC_SWORD_DMG);
+        health.TakeDamage(Constants.BASIC_SWORD_DMG);
 
-        if (currentHealth <= 0) {
+        if (health.currentHealth == 0) {
             Die();
         }
     }

@@ -191,7 +191,8 @@ GameObject:
   - component: {fileID: 4659943711115225697}
   - component: {fileID: 4659943711115225696}
   - component: {fileID: 4659943711115225711}
-  - component: {fileID: 7923970703163890814}
+  - component: {fileID: 5173773476801194082}
+  - component: {fileID: -5078664145095021136}
   m_Layer: 0
   m_Name: Elemental
   m_TagString: Elemental
@@ -332,7 +333,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 4659943710661139578}
---- !u!114 &7923970703163890814
+--- !u!114 &5173773476801194082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,10 +342,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 4659943711115225710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d60d224ff56c443b587e2357a3c7a1, type: 3}
+  m_Script: {fileID: 11500000, guid: ec281910fbc0d3a419bdcd8a68a70b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 4956685196077535944}
+  maxHealth: 250
+  currentHealth: 0
+  healthChange:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-5078664145095021136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659943711115225710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4141e1c285fab034198f0432a0d16f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 5173773476801194082}
   itemPrefab: {fileID: 7828191802980023156, guid: 39aa94b7ab6ad26469a24ecc3857db87,
     type: 3}
 --- !u!1 &8242993794151147321
@@ -548,3 +566,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 4499328285330357755}
+  health: {fileID: 5173773476801194082}

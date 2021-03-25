@@ -1,21 +1,25 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : HealthManager {
-    public PlayerHealth() : base(Constants.PLAYER_HP) { }
+public class PlayerHealth : MonoBehaviour {
+    public Health health;
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Bandit")) {
-            TakeDamage(Constants.BANDIT_DMG);
+            health.TakeDamage(Constants.BANDIT_DMG);
         } else if (collision.gameObject.CompareTag("Elemental")) {
-            TakeDamage(Constants.ELEMENTAL_DMG);
+            health.TakeDamage(Constants.ELEMENTAL_DMG);
         }
 
-        if (currentHealth <= 0) {
-            ResetHealthBar();
-            Destroy(gameObject);
-            LevelManager.instance.Respawn();
+        if (health.currentHealth == 0) {
+            StartCoroutine(Die());
         }
+    }
+
+    private IEnumerator Die() {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(1);
+        LevelManager.instance.Respawn(gameObject);
+        health.ResetHealth();
     }
 }

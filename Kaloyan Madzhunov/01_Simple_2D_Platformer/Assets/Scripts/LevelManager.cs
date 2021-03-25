@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 
@@ -8,11 +6,6 @@ public class LevelManager : MonoBehaviour {
     public static LevelManager instance;
     
     public Transform respawnPoint;
-    public GameObject playerPrefab;
-
-    public CinemachineVirtualCameraBase cameraBase;
-
-    public HealthBar playerHealth;
 
     [Header("Soul Orbs")]
     public int soulOrbs = 0;
@@ -22,12 +15,9 @@ public class LevelManager : MonoBehaviour {
         instance = this;
     }
 
-    public void Respawn() {
-        GameObject player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
-        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-        playerHealth.healthBar = this.playerHealth;
-
-        cameraBase.Follow = player.transform;
+    public void Respawn(GameObject player) {
+        player.transform.position = respawnPoint.position;
+        player.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void IncreaseSoulOrbs(int amount) {
