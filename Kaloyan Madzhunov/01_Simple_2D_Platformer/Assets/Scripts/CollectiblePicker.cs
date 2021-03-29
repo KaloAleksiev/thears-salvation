@@ -8,7 +8,7 @@ public class CollectiblePicker : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
             Destroy(gameObject);
-            LevelManager.instance.IncreaseSoulOrbs(worth);
+            PlayerManager.instance.IncreaseSoulOrbs(worth);
         }
     }
 }

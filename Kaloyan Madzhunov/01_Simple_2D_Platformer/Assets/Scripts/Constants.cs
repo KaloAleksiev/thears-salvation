@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Constants {
+﻿public class Constants {
     //Player
     public const int PLAYER_HP = 100;
 

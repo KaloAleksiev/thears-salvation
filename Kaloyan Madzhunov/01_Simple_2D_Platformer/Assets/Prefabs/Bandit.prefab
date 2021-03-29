@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1144217152201299752}
   - component: {fileID: 1144217152201299753}
   - component: {fileID: 1144217152201299766}
-  - component: {fileID: 5670426749029489114}
+  - component: {fileID: -8405847777013958572}
+  - component: {fileID: -6615926627383565297}
   m_Layer: 0
   m_Name: Bandit
   m_TagString: Bandit
@@ -154,7 +155,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 1144217152258690401}
---- !u!114 &5670426749029489114
+--- !u!114 &-8405847777013958572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,10 +164,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1144217152201299767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71e70db2b964a640af9e461dcc400bb, type: 3}
+  m_Script: {fileID: 11500000, guid: ec281910fbc0d3a419bdcd8a68a70b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 3890698538832627974}
+  maxHealth: 100
+  currentHealth: 0
+  healthChange:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-6615926627383565297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144217152201299767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4141e1c285fab034198f0432a0d16f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: -8405847777013958572}
   itemPrefab: {fileID: 3288600934972478043, guid: 362dcae8d7e3fc941bdefe506a96e7a4,
     type: 3}
 --- !u!1 &1144217152258690414
@@ -548,3 +566,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 3899991940927510403}
+  health: {fileID: -8405847777013958572}
