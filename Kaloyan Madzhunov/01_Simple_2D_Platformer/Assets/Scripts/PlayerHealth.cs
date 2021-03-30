@@ -5,13 +5,21 @@ public class PlayerHealth : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Bandit")) {
-            health.TakeDamage(Constants.BANDIT_DMG);
+            Damage(Constants.BANDIT_DMG);
         } else if (collision.gameObject.CompareTag("Elemental")) {
-            health.TakeDamage(Constants.ELEMENTAL_DMG);
-        }
+            Damage(Constants.ELEMENTAL_DMG);
+        }        
+    }
+
+    public void Damage(int damage) {
+        health.TakeDamage(damage);
 
         if (health.currentHealth == 0) {
-            StartCoroutine(PlayerManager.instance.Respawn());
+            Die();
         }
+    }
+
+    private void Die() {
+        StartCoroutine(PlayerManager.instance.Respawn());
     }
 }
