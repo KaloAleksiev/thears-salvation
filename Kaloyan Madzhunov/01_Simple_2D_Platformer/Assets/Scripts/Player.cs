@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class KnockBackEvent : UnityEvent<Transform> { }
 
 public class Player : MonoBehaviour {
     public PlayerMovement playerMovement;
     public PlayerHealth playerHealth;
+
+    public KnockBackEvent knockBack;
 
     public Health health;
 

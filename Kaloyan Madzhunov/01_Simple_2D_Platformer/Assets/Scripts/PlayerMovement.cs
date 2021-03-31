@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
+    public Player player;
+
     [Header("Object References")]
     public Rigidbody2D rb; //used to add velocity and forces to the player
     public Transform feet;
@@ -44,6 +46,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private bool knockedBack = false;
     private bool isKnockedBackRight;
+
+    private void Start() {
+        player.knockBack.AddListener(Knockback);
+    }
+
+    private void OnDestroy() {
+        player.knockBack.RemoveListener(Knockback);
+    }
 
     private void Update() {
         mx = Input.GetAxis("Horizontal"); //set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)

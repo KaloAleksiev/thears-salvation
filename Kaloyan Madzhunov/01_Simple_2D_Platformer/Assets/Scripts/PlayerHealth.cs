@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour {
 
         if (collision.gameObject.GetComponent<KnockBackDamage>()) {
             Damage(Constants.BASIC_SWORD_DMG);
-            player.playerMovement.Knockback(collision.gameObject.transform); //knock back player from the collided object
+            player.knockBack.Invoke(collision.gameObject.transform); //knock back player from the collided object
         }
     }
 
