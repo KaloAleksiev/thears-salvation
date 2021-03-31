@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     [Header("Object References")]
@@ -9,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Horizontal Movement")]
     public float movementSpeed = 10f;
     public bool isFacingRight = true;
+    public float airSpeed;
 
     [Header("Vertical Movement")]
     public float jumpForce = 20f;
@@ -34,6 +37,8 @@ public class PlayerMovement : MonoBehaviour {
     private bool isWallSliding = false;
     private float wallJumpCoolDown;
 
+    private bool knockedBack = false;
+
     private void Update() {
         mx = Input.GetAxis("Horizontal"); //set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)
 
@@ -52,10 +57,27 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        //movement
-        rb.velocity = new Vector2(mx * movementSpeed, rb.velocity.y);
+        if (!knockedBack) {
+            rb.velocity = new Vector2(mx * movementSpeed, rb.velocity.y);
+        } else {
+            rb.AddForce(new Vector2(mx * airSpeed, 0));
+        }
 
         CheckWallHit();
+    }
+
+    public void Knockback(float horizontalKnock, float verticalKnock) {
+        knockedBack = true;
+
+        rb.AddForce(new Vector2(horizontalKnock, verticalKnock), ForceMode2D.Impulse);
+        Debug.DrawRay(transform.position, rb.velocity, Color.white);
+
+        StartCoroutine(ResetKnockback(1.5f));
+    }
+
+    private IEnumerator ResetKnockback(float v) {
+        yield return new WaitForSeconds(v);
+        knockedBack = false;
     }
 
     public void RotateLeft() {
