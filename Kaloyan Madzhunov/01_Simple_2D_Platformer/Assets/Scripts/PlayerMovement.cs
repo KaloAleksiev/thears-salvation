@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpTime = 0.2f;
     public int extraJumps = 1;
 
+    [Header("Knockback")]
+    public float horizontalKnock;
+    public float verticalKnock;
+    public float knockBackTime;
+
     [Header("Grounded")]
     public float groundRadius = 0.1f;
 
@@ -38,6 +43,7 @@ public class PlayerMovement : MonoBehaviour {
     private float wallJumpCoolDown;
 
     private bool knockedBack = false;
+    private bool isKnockedBackRight;
 
     private void Update() {
         mx = Input.GetAxis("Horizontal"); //set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)
@@ -66,17 +72,19 @@ public class PlayerMovement : MonoBehaviour {
         CheckWallHit();
     }
 
-    public void Knockback(float horizontalKnock, float verticalKnock) {
+    public void Knockback(Transform knockBackFrom) {
         knockedBack = true;
 
-        rb.AddForce(new Vector2(horizontalKnock, verticalKnock), ForceMode2D.Impulse);
+        isKnockedBackRight = transform.position.x > knockBackFrom.position.x;
+
+        rb.AddForce(new Vector2(horizontalKnock * (isKnockedBackRight ? 1 : -1), verticalKnock), ForceMode2D.Impulse);
         Debug.DrawRay(transform.position, rb.velocity, Color.white);
 
-        StartCoroutine(ResetKnockback(1.5f));
+        StartCoroutine(ResetKnockback(knockBackTime));
     }
 
-    private IEnumerator ResetKnockback(float v) {
-        yield return new WaitForSeconds(v);
+    private IEnumerator ResetKnockback(float time) {
+        yield return new WaitForSeconds(time);
         knockedBack = false;
     }
 

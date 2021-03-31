@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7335781122966290055}
   - component: {fileID: 7335781122966290073}
   m_Layer: 0
-  m_Name: RotatingMace
+  m_Name: RotatingSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,6 @@ GameObject:
   - component: {fileID: 7335781124442790163}
   - component: {fileID: 7335781124442790164}
   - component: {fileID: 7335781124442790166}
-  - component: {fileID: 7335781124442790165}
   - component: {fileID: 7335781124442790167}
   m_Layer: 0
   m_Name: Spikes
@@ -288,21 +287,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7335781124442790165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7335781124442790162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef74fcde9a635d4faa97182ee9e0610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: -714866788041218514, guid: 492b2699468168c48b645950cfb4016b, type: 3}
-  horizontalKnock: 5
-  verticalKnock: 20
 --- !u!114 &7335781124442790167
 MonoBehaviour:
   m_ObjectHideFlags: 0
