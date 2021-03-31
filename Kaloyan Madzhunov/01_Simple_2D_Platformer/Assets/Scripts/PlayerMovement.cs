@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpForce = 20f;
     public float jumpTime = 0.2f;
     public int extraJumps = 1;
+    public float bottomLineY;
 
     [Header("Knockback")]
     public float horizontalKnock;
@@ -70,6 +71,14 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         CheckGrounded();
+
+        CheckIfBelowGround();
+    }
+
+    private void CheckIfBelowGround() {
+        if (transform.position.y < bottomLineY) {
+            player.drainHealth.Invoke();
+        }
     }
 
     private void FixedUpdate() {
@@ -82,7 +91,7 @@ public class PlayerMovement : MonoBehaviour {
         CheckWallHit();
     }
 
-    public void Knockback(Transform knockBackFrom) {
+    private void Knockback(Transform knockBackFrom) {
         knockedBack = true;
 
         isKnockedBackRight = transform.position.x > knockBackFrom.position.x;

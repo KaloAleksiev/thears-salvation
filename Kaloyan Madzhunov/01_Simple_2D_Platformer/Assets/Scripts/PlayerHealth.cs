@@ -4,6 +4,14 @@ public class PlayerHealth : MonoBehaviour {
     public Player player;
     public Health health;
 
+    private void Start() {
+        player.drainHealth.AddListener(DrainHealth);
+    }
+
+    private void OnDestroy() {
+        player.drainHealth.RemoveListener(DrainHealth);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Bandit")) {
             Damage(Constants.BANDIT_DMG);
@@ -17,7 +25,7 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
-    public void Damage(int damage) {
+    private void Damage(int damage) {
         health.TakeDamage(damage);
 
         if (health.currentHealth == 0) {
@@ -25,7 +33,11 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
+    private void DrainHealth() {
+        Damage(health.currentHealth);
+    }
+
     private void Die() {
-        StartCoroutine(PlayerManager.instance.Respawn());
+         StartCoroutine(PlayerManager.instance.Respawn());
     }
 }

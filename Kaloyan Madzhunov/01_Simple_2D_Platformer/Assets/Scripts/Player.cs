@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     public PlayerHealth playerHealth;
 
     public KnockBackEvent knockBack;
+    public UnityEvent drainHealth;
 
     public Health health;
 
