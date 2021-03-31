@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class RotatingMace : MonoBehaviour {
-    public float speed;
+    public float speed = 1.4f;
     public bool isRotationClockwise = true;
 
     void FixedUpdate() {

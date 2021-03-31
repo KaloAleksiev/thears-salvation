@@ -13,18 +13,18 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Horizontal Movement")]
     public float movementSpeed = 10f;
     public bool isFacingRight = true;
-    public float airSpeed;
+    public float airSpeed = 8f;
 
     [Header("Vertical Movement")]
     public float jumpForce = 20f;
     public float jumpTime = 0.2f;
     public int extraJumps = 1;
-    public float bottomLineY;
+    public float bottomLineY = -10f;
 
     [Header("Knockback")]
-    public float horizontalKnock;
-    public float verticalKnock;
-    public float knockBackTime;
+    public float horizontalKnock = 3f;
+    public float verticalKnock = 12f;
+    public float knockBackTime = 0.6f;
 
     [Header("Grounded")]
     public float groundRadius = 0.1f;
