@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
+    public Player player;
+
     [Header("Object References")]
     public Rigidbody2D rb; //used to add velocity and forces to the player
     public Transform feet;
@@ -9,11 +13,18 @@ public class PlayerMovement : MonoBehaviour {
     [Header("Horizontal Movement")]
     public float movementSpeed = 10f;
     public bool isFacingRight = true;
+    public float airSpeed = 8f;
 
     [Header("Vertical Movement")]
     public float jumpForce = 20f;
     public float jumpTime = 0.2f;
     public int extraJumps = 1;
+    public float bottomLineY = -10f;
+
+    [Header("Knockback")]
+    public float horizontalKnock = 3f;
+    public float verticalKnock = 12f;
+    public float knockBackTime = 0.6f;
 
     [Header("Grounded")]
     public float groundRadius = 0.1f;
@@ -34,6 +45,17 @@ public class PlayerMovement : MonoBehaviour {
     private bool isWallSliding = false;
     private float wallJumpCoolDown;
 
+    private bool knockedBack = false;
+    private bool isKnockedBackRight;
+
+    private void Start() {
+        player.knockBack.AddListener(Knockback);
+    }
+
+    private void OnDestroy() {
+        player.knockBack.RemoveListener(Knockback);
+    }
+
     private void Update() {
         mx = Input.GetAxis("Horizontal"); //set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)
 
@@ -49,13 +71,40 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         CheckGrounded();
+
+        CheckIfBelowGround();
+    }
+
+    private void CheckIfBelowGround() {
+        if (transform.position.y < bottomLineY) {
+            player.drainHealth.Invoke();
+        }
     }
 
     private void FixedUpdate() {
-        //movement
-        rb.velocity = new Vector2(mx * movementSpeed, rb.velocity.y);
+        if (!knockedBack) {
+            rb.velocity = new Vector2(mx * movementSpeed, rb.velocity.y);
+        } else {
+            rb.AddForce(new Vector2(mx * airSpeed, 0));
+        }
 
         CheckWallHit();
+    }
+
+    private void Knockback(Transform knockBackFrom) {
+        knockedBack = true;
+
+        isKnockedBackRight = transform.position.x > knockBackFrom.position.x;
+
+        rb.AddForce(new Vector2(horizontalKnock * (isKnockedBackRight ? 1 : -1), verticalKnock), ForceMode2D.Impulse);
+        Debug.DrawRay(transform.position, rb.velocity, Color.white);
+
+        StartCoroutine(ResetKnockback(knockBackTime));
+    }
+
+    private IEnumerator ResetKnockback(float time) {
+        yield return new WaitForSeconds(time);
+        knockedBack = false;
     }
 
     public void RotateLeft() {

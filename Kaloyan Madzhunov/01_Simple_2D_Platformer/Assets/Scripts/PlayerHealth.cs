@@ -1,17 +1,43 @@
 ﻿using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
+    public Player player;
     public Health health;
+
+    private void Start() {
+        player.drainHealth.AddListener(DrainHealth);
+    }
+
+    private void OnDestroy() {
+        player.drainHealth.RemoveListener(DrainHealth);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Bandit")) {
-            health.TakeDamage(Constants.BANDIT_DMG);
+            Damage(Constants.BANDIT_DMG);
         } else if (collision.gameObject.CompareTag("Elemental")) {
-            health.TakeDamage(Constants.ELEMENTAL_DMG);
+            Damage(Constants.ELEMENTAL_DMG);
         }
 
-        if (health.currentHealth == 0) {
-            StartCoroutine(PlayerManager.instance.Respawn());
+        if (collision.gameObject.GetComponent<KnockBackDamage>()) {
+            Damage(Constants.BASIC_SWORD_DMG);
+            player.knockBack.Invoke(collision.gameObject.transform); //knock back player from the collided object
         }
+    }
+
+    private void Damage(int damage) {
+        health.TakeDamage(damage);
+
+        if (health.currentHealth == 0) {
+            Die();
+        }
+    }
+
+    private void DrainHealth() {
+        Damage(health.currentHealth);
+    }
+
+    private void Die() {
+         StartCoroutine(PlayerManager.instance.Respawn());
     }
 }
