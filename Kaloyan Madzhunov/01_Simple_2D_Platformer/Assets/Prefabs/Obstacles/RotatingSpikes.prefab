@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 6dfe8096ae0a4584ba0b4cc4bca7470a, type: 3}
   m_Color: {r: 0.1509434, g: 0.1509434, b: 0.1509434, a: 1}
   m_FlipX: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.4
+  isRotationClockwise: 1
 --- !u!1 &7335781123751294088
 GameObject:
   m_ObjectHideFlags: 0
