@@ -1,43 +1,56 @@
 ﻿using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerHealth : MonoBehaviour
+{
     public Player player;
     public Health health;
 
-    private void Start() {
+    private void Start()
+    {
         player.drainHealth.AddListener(DrainHealth);
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         player.drainHealth.RemoveListener(DrainHealth);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Bandit")) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bandit"))
+        {
             Damage(Constants.BANDIT_DMG);
-        } else if (collision.gameObject.CompareTag("Elemental")) {
+        }
+        else if (collision.gameObject.CompareTag("Elemental"))
+        {
             Damage(Constants.ELEMENTAL_DMG);
         }
 
-        if (collision.gameObject.GetComponent<KnockBackDamage>()) {
+        if (collision.gameObject.GetComponent<KnockBackDamage>())
+        {
             Damage(Constants.BASIC_SWORD_DMG);
             player.knockBack.Invoke(collision.gameObject.transform); //knock back player from the collided object
         }
     }
 
-    private void Damage(int damage) {
+    private void Damage(int damage)
+    {
         health.TakeDamage(damage);
 
-        if (health.currentHealth == 0) {
+        if (health.currentHealth == 0)
+        {
             Die();
         }
     }
 
-    private void DrainHealth() {
+    private void DrainHealth()
+    {
         Damage(health.currentHealth);
     }
 
-    private void Die() {
-         StartCoroutine(PlayerManager.instance.Respawn());
+    private void Die()
+    {
+        StartCoroutine(PlayerManager.instance.Respawn());
     }
 }
+

@@ -13,7 +13,8 @@ public class Player : MonoBehaviour {
 
     public Health health;
 
-    public void ResetPlayerHealth() {
+    public void ResetPlayerHealth()
+    {
         health.currentHealth = health.maxHealth;
         health.healthChange.Invoke();
     }

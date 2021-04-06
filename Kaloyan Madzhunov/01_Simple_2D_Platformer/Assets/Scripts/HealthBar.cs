@@ -8,10 +8,12 @@ public class HealthBar : MonoBehaviour {
     private void Start() {
         SetMaxHealth(health.maxHealth);
         health.healthChange.AddListener(SetHealth);
+        health.sliderChange.AddListener(Appear);
     }
 
     private void OnDestroy() {
         health.healthChange.RemoveListener(SetHealth);
+        health.sliderChange.RemoveListener(Appear);
     }
 
     private void SetMaxHealth(int health) {
@@ -21,5 +23,10 @@ public class HealthBar : MonoBehaviour {
 
     private void SetHealth() {
         slider.value = health.currentHealth;
+    }
+
+    private void Appear(bool appear)
+    {
+        slider.gameObject.SetActive(appear);
     }
 }
