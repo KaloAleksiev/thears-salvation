@@ -50,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        StartCoroutine(PlayerManager.instance.Respawn());
+        player.respawn.Invoke();
     }
 }
 

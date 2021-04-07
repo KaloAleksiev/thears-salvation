@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 
     public KnockBackEvent knockBack;
     public UnityEvent drainHealth;
+    public UnityEvent respawn;
 
     public Health health;
 
