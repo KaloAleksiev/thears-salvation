@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 966693945}
   - component: {fileID: 966693944}
   m_Layer: 5
-  m_Name: Confirmation
+  m_Name: ExitApplicationConfirmation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
