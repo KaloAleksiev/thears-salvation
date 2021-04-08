@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour {
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
     private bool crouch = false;
-    [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = 0.36f;
 
     [Header("Grounded")]
     public float groundRadius = 0.1f;

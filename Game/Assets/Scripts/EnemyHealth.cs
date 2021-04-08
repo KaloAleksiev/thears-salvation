@@ -8,14 +8,6 @@ public class EnemyHealth : MonoBehaviour {
     public GameObject healthIndicator;
     public float disableTime = 3;
 
-    private void OnMouseDown() {
-        health.TakeDamage(Constants.BASIC_SWORD_DMG);
-
-        if (health.currentHealth == 0) {
-            Die();
-        }
-    }
-
     public void GetDamaged(int damage)
     {
         health.TakeDamage(damage);
@@ -27,13 +19,14 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     private void Die() {
+        animator.SetInteger("AnimState", 3);
         animator.SetTrigger("Death");
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         GetComponent<Collider2D>().enabled = false;
         health.sliderChange.Invoke(false);
         StartCoroutine(EnableEnemy(false));
         //Destroy(gameObject);
-        //Instantiate(itemPrefab, transform.position, Quaternion.identity);
+        Instantiate(itemPrefab, transform.position, Quaternion.identity);
     }
 
     public IEnumerator EnableEnemy(bool appear)

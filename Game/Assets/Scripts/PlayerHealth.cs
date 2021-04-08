@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void Damage(int damage)
+    public void Damage(int damage)
     {
         health.TakeDamage(damage);
 

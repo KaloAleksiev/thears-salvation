@@ -12,7 +12,7 @@ public class EnemyPatrol : MonoBehaviour {
     RaycastHit2D hit;
 
     private void Update() {
-        hit = Physics2D.Raycast(groundCheck.position, -transform.up, 1f, groundLayers);
+        hit = Physics2D.Raycast(groundCheck.position, -transform.up, 2f, groundLayers);
     }
 
     private void FixedUpdate() {

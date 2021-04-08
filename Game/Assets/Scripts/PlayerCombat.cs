@@ -6,7 +6,7 @@ public class PlayerCombat : MonoBehaviour
 {
     public Animator animator;
     public Transform attackPoint;
-    public float attackRange = 0.5f;
+    public float attackRange = 0.7f;
     public LayerMask enemyLayers;
 
     public float attackRate = 2.5f;
@@ -34,9 +34,12 @@ public class PlayerCombat : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
         //Damage enemies
-        foreach (Collider2D enemy in hitEnemies)
+        if (hitEnemies.Length != 0)
         {
-            enemy.GetComponent<EnemyHealth>().GetDamaged(Constants.BASIC_SWORD_DMG);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<EnemyHealth>().GetDamaged(Constants.BASIC_SWORD_DMG);
+            }
         }
     }
 
