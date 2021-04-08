@@ -13,6 +13,8 @@ public class UpgradesMenu : MonoBehaviour {
 
     public TextMeshProUGUI notEnoughSoulOrbsMessage;
     public TextMeshProUGUI maxUpgradesReachedMessage;
+    public GameObject upgradeButton;
+    public GameObject upgradeConfirmation;
 
     private Upgrade selectedUpgrade;
 
@@ -36,7 +38,7 @@ public class UpgradesMenu : MonoBehaviour {
         maxUpgradesReachedMessage.gameObject.SetActive(false);
     }
 
-    public void PurchaseUpgrade() {
+    public void ValidateUpgradePurchase() {
         // check if max upgrades are reached
         if (selectedUpgrade.upgradesDone < selectedUpgrade.maxUpgrades) {
             // check if the player has enough soul orbs to purchase the upgrade
@@ -44,17 +46,25 @@ public class UpgradesMenu : MonoBehaviour {
                 // if the player does not have enough soul orbs, display appropriate message
                 notEnoughSoulOrbsMessage.gameObject.SetActive(true);
             } else {
-                // add negative amount of soul orbs from player (i.e. subtract soul orbs from player)
-                hud.player.addSoulOrbs.Invoke(-selectedUpgrade.cost);
-                // increase the upgrades done for this upgrade
-                selectedUpgrade.upgradesDone++;
-                // update upgrade done UI text
-                SetUpgradesDoneText(selectedUpgrade);
+                upgradeConfirmation.SetActive(true);
+                upgradeButton.SetActive(false);
             }
         } else {
             // if max upgrades are already reached, display appropriate message
             maxUpgradesReachedMessage.gameObject.SetActive(true);
         }
+    }
+
+    public void PurchaseUpgrade() {
+        // add negative amount of soul orbs from player (i.e. subtract soul orbs from player)
+        hud.player.addSoulOrbs.Invoke(-selectedUpgrade.cost);
+        // increase the upgrades done for this upgrade
+        selectedUpgrade.upgradesDone++;
+        // update upgrade done UI text
+        SetUpgradesDoneText(selectedUpgrade);
+
+        upgradeConfirmation.SetActive(false);
+        upgradeButton.SetActive(true);
     }
 
     private void SetUpgradesDoneText(Upgrade upgrade) {

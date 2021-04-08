@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour {
 
     private void Start() {
         updateSoulOrbsUI.AddListener(UpdateSoulOrbsUI);
+        UpdateSoulOrbsUI();
     }
 
     private void OnDestroy() {
