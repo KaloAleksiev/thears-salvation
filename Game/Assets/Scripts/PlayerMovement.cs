@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour {
 
         // -- Handle Animations --
         //Death
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("z"))
         {
             if (!m_isDead)
                 m_animator.SetTrigger("Death");

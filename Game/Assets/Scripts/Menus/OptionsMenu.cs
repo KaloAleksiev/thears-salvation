@@ -6,19 +6,11 @@ using UnityEngine.UI;
 public class OptionsMenu : MonoBehaviour {
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
-    public GameObject previousMenuUI;
 
     private Resolution[] resolutions;
 
     private void Start() {
         configureResolutionDropdown();
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            gameObject.SetActive(false);
-            previousMenuUI.SetActive(true);
-        }
     }
 
     public void SetVolume(float volume) {

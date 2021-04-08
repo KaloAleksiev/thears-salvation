@@ -3,14 +3,18 @@ using UnityEngine.Events;
 
 [System.Serializable]
 public class KnockBackEvent : UnityEvent<Transform> { }
+[System.Serializable]
+public class SetSoulOrbsEvent : UnityEvent<int> { }
 
 public class Player : MonoBehaviour {
     public PlayerMovement playerMovement;
     public PlayerHealth playerHealth;
+    public PlayerCombat playerCombat;
 
     public KnockBackEvent knockBack;
     public UnityEvent drainHealth;
     public UnityEvent respawn;
+    public SetSoulOrbsEvent addSoulOrbs;
 
     public Health health;
 
