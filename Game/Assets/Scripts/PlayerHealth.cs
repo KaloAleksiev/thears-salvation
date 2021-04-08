@@ -50,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        player.playDeathAnim.Invoke();
         player.respawn.Invoke();
     }
 }

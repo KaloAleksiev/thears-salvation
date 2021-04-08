@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpForce = 20f;
     public float jumpTime = 0.2f;
     public int extraJumps = 1;
-    public float bottomLineY = -10f;
+    public float bottomLineY = -15f;
 
     [Header("Knockback")]
     public float horizontalKnock = 3f;

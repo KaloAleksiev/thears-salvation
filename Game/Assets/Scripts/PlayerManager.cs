@@ -38,6 +38,8 @@ public class PlayerManager : MonoBehaviour {
         yield return new WaitForSeconds(2);
 
         Reset();
+        player.playRecoverAnim.Invoke();
+
         Activate(true);
     }
 
@@ -49,14 +51,11 @@ public class PlayerManager : MonoBehaviour {
             player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
 
-        //disable/enable character box collider 2d
-        player.GetComponent<BoxCollider2D>().enabled = isActivated;
-
         //disable/enable character movement
         player.playerMovement.enabled = isActivated;
-
-        //disable/enable spriterenderer; TODO show corpse sprite while character is deactivated
-        foreach (SpriteRenderer sr in player.GetComponentsInChildren<SpriteRenderer>()) sr.enabled = isActivated;
+        player.playerCombat.enabled = isActivated;
+        player.playerHealth.enabled = isActivated;
+        player.health.enabled = isActivated;
     }
 
     private void Reset() {
