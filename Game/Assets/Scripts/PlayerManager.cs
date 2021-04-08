@@ -1,24 +1,19 @@
 ﻿using System.Collections;
 using UnityEngine;
-using TMPro;
 
 public class PlayerManager : MonoBehaviour {
     public static PlayerManager instance;
 
     public Player player;
     public Transform respawnPoint;
-
-    [Header("Soul Orbs")]
-    public PlayerData playerData;
-    public TextMeshProUGUI soulOrbsUI;
-    public TextMeshProUGUI soulOrbsUpgradesUI;
+    public HUDManager hud;
 
     private void Awake() {
         instance = this;
     }
 
     private void Start() {
-        UpdateSoulOrbsUI();
+        hud.updateSoulOrbsUI.Invoke();
 
         player.respawn.AddListener(Respawn);
         player.addSoulOrbs.AddListener(AddSoulOrbs);
@@ -69,12 +64,7 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void AddSoulOrbs(int amount) {
-        playerData.AddSoulOrbs(amount);
-        UpdateSoulOrbsUI();
-    }
-
-    private void UpdateSoulOrbsUI() {
-        soulOrbsUI.text = "Soul Orbs: " + playerData.soulOrbs;
-        soulOrbsUpgradesUI.text = playerData.soulOrbs.ToString();
+        player.playerData.AddSoulOrbs(amount);
+        hud.updateSoulOrbsUI.Invoke();
     }
 }

@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour {
+    public PlayerData playerData;
     public PlayerMovement playerMovement;
     public PlayerHealth playerHealth;
     public PlayerCombat playerCombat;

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class InGameMenus : MonoBehaviour {
     public static bool GameIsPaused = false;
 
-    public Player player;
+    public HUDManager hud;
     public GameObject pauseMenuUI;
     public GameObject upgradesMenuUI;
 
@@ -46,14 +46,14 @@ public class InGameMenus : MonoBehaviour {
     private void FreezeGame(bool isGameFrozen) {
         if (isGameFrozen) {
             Time.timeScale = 0f;
-            player.GetComponent<Animator>().enabled = false;
-            player.playerMovement.enabled = false;
-            player.playerCombat.enabled = false;
+            hud.player.GetComponent<Animator>().enabled = false;
+            hud.player.playerMovement.enabled = false;
+            hud.player.playerCombat.enabled = false;
         } else {
             Time.timeScale = 1f;
-            player.GetComponent<Animator>().enabled = true;
-            player.playerMovement.enabled = true;
-            player.playerCombat.enabled = true;
+            hud.player.GetComponent<Animator>().enabled = true;
+            hud.player.playerMovement.enabled = true;
+            hud.player.playerCombat.enabled = true;
         }
 
         GameIsPaused = isGameFrozen;

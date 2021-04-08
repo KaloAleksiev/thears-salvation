@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class UpgradesMenu : MonoBehaviour {
-    public Player player;
+    public HUDManager hud;
 
     public Image iconImage;
     public TextMeshProUGUI nameText;
@@ -40,12 +40,12 @@ public class UpgradesMenu : MonoBehaviour {
         // check if max upgrades are reached
         if (selectedUpgrade.upgradesDone < selectedUpgrade.maxUpgrades) {
             // check if the player has enough soul orbs to purchase the upgrade
-            if (PlayerManager.instance.playerData.soulOrbs < selectedUpgrade.cost) {
+            if (hud.player.playerData.soulOrbs < selectedUpgrade.cost) {
                 // if the player does not have enough soul orbs, display appropriate message
                 notEnoughSoulOrbsMessage.gameObject.SetActive(true);
             } else {
                 // add negative amount of soul orbs from player (i.e. subtract soul orbs from player)
-                player.addSoulOrbs.Invoke(-selectedUpgrade.cost);
+                hud.player.addSoulOrbs.Invoke(-selectedUpgrade.cost);
                 // increase the upgrades done for this upgrade
                 selectedUpgrade.upgradesDone++;
                 // update upgrade done UI text
