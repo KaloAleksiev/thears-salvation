@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5622d24b79a98c47acb9bca1d5be0d3, type: 3}
+  m_Name: HealthBoost
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  name: Health Boost
+  description: "Adds 25HP to the player\u2019s health, max +100HP"
+  cost: 3
+  upgradesDone: 0
+  maxUpgrades: 4
