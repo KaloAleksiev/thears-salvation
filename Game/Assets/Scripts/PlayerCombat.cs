@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public Animator animator;
+    public Player player;
     public Transform attackPoint;
     public float attackRange = 0.7f;
     public LayerMask enemyLayers;
@@ -28,7 +28,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
         //Play animation
-        animator.SetTrigger("Attack");
+        player.playAttackAnimation.Invoke();
 
         //Detect enemies in range
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);

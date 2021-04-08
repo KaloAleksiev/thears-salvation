@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour {
         yield return new WaitForSeconds(2);
 
         Reset();
-        player.playRecoverAnim.Invoke();
+        yield return new WaitForSeconds(1.1f);
 
         Activate(true);
     }
@@ -46,9 +46,9 @@ public class PlayerManager : MonoBehaviour {
     private void Activate(bool isActivated) {
         //set body type of character rigidbody 2d
         if (isActivated) {
-            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         } else {
-            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         }
 
         //disable/enable character movement
@@ -64,6 +64,8 @@ public class PlayerManager : MonoBehaviour {
         player.playerMovement.RotateRight();
 
         player.ResetPlayerHealth();
+        player.playRecoverAnimation.Invoke();
+        player.setIntegerAnimator.Invoke("AnimState", 0);
     }
 
     public void AddSoulOrbs(int amount) {

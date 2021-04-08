@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class KnockBackEvent : UnityEvent<Transform> { }
-[System.Serializable]
-public class SetSoulOrbsEvent : UnityEvent<int> { }
-
 public class Player : MonoBehaviour {
     public PlayerMovement playerMovement;
     public PlayerHealth playerHealth;
     public PlayerCombat playerCombat;
+    public PlayerAnimations playerAnimations;
     public Health health;
 
     public KnockBackEvent knockBack;
@@ -17,8 +13,17 @@ public class Player : MonoBehaviour {
     public UnityEvent respawn;
     public SetSoulOrbsEvent addSoulOrbs;
 
-    public UnityEvent playDeathAnim;
-    public UnityEvent playRecoverAnim;
+    //animations
+    public UnityEvent playJumpAnimation;
+    public UnityEvent playAttackAnimation;
+    public UnityEvent playHurtAnimation;
+    public UnityEvent playDeathAnimation;
+    public UnityEvent playRecoverAnimation;
+
+    //animator
+    public SetIntegerAnimatorEvent setIntegerAnimator;
+    public SetFloatAnimatorEvent setFloatAnimator;
+    public SetBoolAnimatorEvent setBoolAnimator;
 
     public void ResetPlayerHealth()
     {
@@ -26,3 +31,9 @@ public class Player : MonoBehaviour {
         health.healthChange.Invoke();
     }
 }
+
+[System.Serializable] public class KnockBackEvent : UnityEvent<Transform> { }
+[System.Serializable] public class SetSoulOrbsEvent : UnityEvent<int> { }
+[System.Serializable] public class SetIntegerAnimatorEvent : UnityEvent<string, int> { }
+[System.Serializable] public class SetFloatAnimatorEvent : UnityEvent<string, float> { }
+[System.Serializable] public class SetBoolAnimatorEvent : UnityEvent<string, bool> { }

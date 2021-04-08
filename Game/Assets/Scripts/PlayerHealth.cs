@@ -35,11 +35,12 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(int damage)
     {
-        health.TakeDamage(damage);
+        if (health.currentHealth > 0) {
+            health.TakeDamage(damage);
 
-        if (health.currentHealth == 0)
-        {
-            Die();
+            if (health.currentHealth == 0) {
+                Die();
+            }
         }
     }
 
@@ -50,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        player.playDeathAnim.Invoke();
+        player.playDeathAnimation.Invoke();
         player.respawn.Invoke();
     }
 }

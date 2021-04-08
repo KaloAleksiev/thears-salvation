@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour {
     public Rigidbody2D rb; //used to add velocity and forces to the player
     public Transform feet;
     public LayerMask groundLayer;
-    public Animator m_animator;
     private Sensor_Bandit m_groundSensor;
     [SerializeField] private Transform m_CeilingCheck;
     [SerializeField] private Collider2D m_CrouchDisableCollider;
@@ -70,7 +69,6 @@ public class PlayerMovement : MonoBehaviour {
     private void Start()
     {
         movementSpeed = defaultMovementSpeed;
-        m_animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
         player.knockBack.AddListener(Knockback);
@@ -117,34 +115,33 @@ public class PlayerMovement : MonoBehaviour {
         {
             isGrounded = true;
             jumpCounter = 0;
-            m_animator.SetBool("Grounded", isGrounded);
+            player.setBoolAnimator.Invoke("Grounded", isGrounded);
         }
 
         //Check if character just started falling
         if (isGrounded && !m_groundSensor.State())
         {
             isGrounded = false;
-            m_animator.SetBool("Grounded", isGrounded);
+            player.setBoolAnimator.Invoke("Grounded", isGrounded);
         }
 
         //Set AirSpeed in animator
-        m_animator.SetFloat("AirSpeed", rb.velocity.y);
+        player.setFloatAnimator.Invoke("AirSpeed", rb.velocity.y);
 
         // -- Handle Animations --
         //Death
-        if (Input.GetKeyDown("z"))
-        {
+        if (Input.GetKeyDown("z")) {
             if (!m_isDead)
-                m_animator.SetTrigger("Death");
+                player.playDeathAnimation.Invoke();
             else
-                m_animator.SetTrigger("Recover");
+                player.playRecoverAnimation.Invoke();
 
             m_isDead = !m_isDead;
         }
 
         //Hurt
         else if (Input.GetKeyDown("q"))
-            m_animator.SetTrigger("Hurt");
+            player.playHurtAnimation.Invoke();
 
         //Change between idle and combat idle
         else if (Input.GetKeyDown("f"))
@@ -152,15 +149,15 @@ public class PlayerMovement : MonoBehaviour {
 
         //Run
         else if (Mathf.Abs(mx) > Mathf.Epsilon)
-            m_animator.SetInteger("AnimState", 2);
+            player.setIntegerAnimator.Invoke("AnimState", 2);
 
         //Combat Idle
         else if (m_combatIdle)
-            m_animator.SetInteger("AnimState", 1);
+            player.setIntegerAnimator.Invoke("AnimState", 1);
 
         //Idle
         else
-            m_animator.SetInteger("AnimState", 0);
+            player.setIntegerAnimator.Invoke("AnimState", 0);
     }
 
     private void CheckIfBelowGround()
@@ -253,7 +250,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (groundCheck) { //on the ground
             isGrounded = true;
-            m_animator.SetBool("Grounded", isGrounded);
+            player.setBoolAnimator.Invoke("Grounded", isGrounded);
             jumpCounter = 0; //reset the jump count
             jumpCoolDown = Time.time + jumpTime; //give the player the benefit of 0.2 seconds to hit the jump key before actually touching the ground
         } else if (Time.time < jumpCoolDown) { //the player is not touching the ground
@@ -265,8 +262,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Jump() {
         if (isGrounded || jumpCounter < extraJumps || isWallSliding) {
-            m_animator.SetTrigger("Jump");
-            m_animator.SetBool("Grounded", isGrounded);
+            player.playJumpAnimation.Invoke();
+            player.setBoolAnimator.Invoke("Grounded", isGrounded);
             m_groundSensor.Disable(0.2f);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpCounter++;
