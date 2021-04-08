@@ -16,7 +16,19 @@ public class PlayerManager : MonoBehaviour {
         instance = this;
     }
 
-    public IEnumerator Respawn() {
+    private void Start() {
+        player.respawn.AddListener(Respawn);
+    }
+
+    private void OnDestroy() {
+        player.respawn.RemoveListener(Respawn);
+    }
+
+    public void Respawn() {
+        StartCoroutine(RespawnRoutine());
+    }
+
+    public IEnumerator RespawnRoutine() {
         Activate(false);
         yield return new WaitForSeconds(2);
 
