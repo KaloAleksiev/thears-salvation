@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public Health health;
     public PolygonCollider2D playerCollider;
     public float invincibilityTime;
+    public int fadeBlinkTimes = 3;
 
     private void Start()
     {
@@ -54,13 +55,27 @@ public class PlayerHealth : MonoBehaviour
         // disable player collider
         EnablePlayerCollider(false);
 
-        // wait for invincibilityTime seconds, a.k.a become invincible for invincibilityTime
+        if (health.currentHealth > 0) {
+            StartCoroutine(FadeBlink());
+        }
+        // wait for 'invincibilityTime' seconds, a.k.a become invincible for 'invincibilityTime'
         yield return new WaitForSeconds(invincibilityTime);
 
         // enable player collider only if the character is alive
         // if the character is dead, the collider must stay disabled so that the corpse cannot be hit
         if (health.currentHealth > 0) {
+            
             EnablePlayerCollider(true);
+        }
+    }
+    
+    private IEnumerator FadeBlink() {
+        // make character blink 'fadeBlinkTimes' times for 'invincibilityTime' seconds
+        for (int i = 0; i < fadeBlinkTimes; i++) {
+            player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+            yield return new WaitForSeconds(invincibilityTime / (fadeBlinkTimes * 2));
+            player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            yield return new WaitForSeconds(invincibilityTime / (fadeBlinkTimes * 2));
         }
     }
 
