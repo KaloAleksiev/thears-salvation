@@ -1,40 +1,46 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     public Player player;
     public Health health;
+    public PolygonCollider2D playerCollider;
+    public float invincibilityTime;
 
     private void Start()
     {
         player.drainHealth.AddListener(DrainHealth);
+        player.enablePlayerCollider.AddListener(EnablePlayerCollider);
     }
 
     private void OnDestroy()
     {
         player.drainHealth.RemoveListener(DrainHealth);
+        player.enablePlayerCollider.RemoveListener(EnablePlayerCollider);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bandit"))
+        if (collision.CompareTag("Bandit"))
         {
             Damage(Constants.BANDIT_DMG);
         }
-        else if (collision.gameObject.CompareTag("Elemental"))
+        else if (collision.CompareTag("Elemental"))
         {
             Damage(Constants.ELEMENTAL_DMG);
         }
 
-        if (collision.gameObject.GetComponent<KnockBackDamage>())
+        if (collision.GetComponent<KnockBackDamage>())
         {
             Damage(Constants.BASIC_SWORD_DMG);
-            player.knockBack.Invoke(collision.gameObject.transform); //knock back player from the collided object
+            StartCoroutine(BecomeInvincible());
+            player.knockBack.Invoke(collision.transform); //knock back player from the collided object
         }
     }
 
-    public void Damage(int damage)
-    {
+    public void Damage(int damage) {
         if (health.currentHealth > 0) {
             health.TakeDamage(damage);
 
@@ -42,6 +48,24 @@ public class PlayerHealth : MonoBehaviour
                 Die();
             }
         }
+    }
+
+    private IEnumerator BecomeInvincible() {
+        // disable player collider
+        EnablePlayerCollider(false);
+
+        // wait for invincibilityTime seconds, a.k.a become invincible for invincibilityTime
+        yield return new WaitForSeconds(invincibilityTime);
+
+        // enable player collider only if the character is alive
+        // if the character is dead, the collider must stay disabled so that the corpse cannot be hit
+        if (health.currentHealth > 0) {
+            EnablePlayerCollider(true);
+        }
+    }
+
+    private void EnablePlayerCollider(bool isEnabled) {
+        playerCollider.enabled = isEnabled;
     }
 
     private void DrainHealth()

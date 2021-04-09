@@ -2,15 +2,9 @@
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
-    public static PlayerManager instance;
-
     public Player player;
     public Transform respawnPoint;
     public HUDManager hud;
-
-    private void Awake() {
-        instance = this;
-    }
 
     private void Start() {
         hud.updateSoulOrbsUI.Invoke();
@@ -30,7 +24,7 @@ public class PlayerManager : MonoBehaviour {
 
     public IEnumerator RespawnRoutine() {
         Activate(false);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2f);
 
         Reset();
         yield return new WaitForSeconds(1.1f);
@@ -51,6 +45,7 @@ public class PlayerManager : MonoBehaviour {
         player.playerCombat.enabled = isActivated;
         player.playerHealth.enabled = isActivated;
         player.health.enabled = isActivated;
+        player.enablePlayerCollider.Invoke(isActivated);
     }
 
     private void Reset() {

@@ -6,13 +6,13 @@ public class Player : MonoBehaviour {
     public PlayerMovement playerMovement;
     public PlayerHealth playerHealth;
     public PlayerCombat playerCombat;
-    public PlayerAnimations playerAnimations;
     public Health health;
 
     public KnockBackEvent knockBack;
     public UnityEvent drainHealth;
     public UnityEvent respawn;
     public SetSoulOrbsEvent addSoulOrbs;
+    public EnablePlayerColliderUnityEvent enablePlayerCollider;
 
     //animations
     public UnityEvent playJumpAnimation;
@@ -38,3 +38,4 @@ public class Player : MonoBehaviour {
 [System.Serializable] public class SetIntegerAnimatorEvent : UnityEvent<string, int> { }
 [System.Serializable] public class SetFloatAnimatorEvent : UnityEvent<string, float> { }
 [System.Serializable] public class SetBoolAnimatorEvent : UnityEvent<string, bool> { }
+[System.Serializable] public class EnablePlayerColliderUnityEvent : UnityEvent<bool> { }

@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private int jumpCounter = 0;
     private float jumpCoolDown;
-    public bool isGrounded = false;
+    private bool isGrounded = false;
 
     private bool m_combatIdle = false;
     private bool m_isDead = false;
