@@ -38,7 +38,11 @@ public class PlayerCombat : MonoBehaviour
         {
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<EnemyHealth>().GetDamaged(Constants.BASIC_SWORD_DMG);
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+
+                if (enemyHealth) {
+                    enemyHealth.GetDamaged(Constants.BASIC_SWORD_DMG);
+                }
             }
         }
     }

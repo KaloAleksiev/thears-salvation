@@ -81,9 +81,12 @@ public class EnemyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(attackDuration);
         Collider2D hitEnemy = Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayers);
-        if (hitEnemy != null)
-        {
-            hitEnemy.GetComponent<PlayerHealth>().Damage(Constants.BANDIT_DMG);
+        if (hitEnemy != null) {
+            PlayerHealth playerHealth = hitEnemy.GetComponent<PlayerHealth>();
+
+            if (playerHealth) {
+                playerHealth.Damage(Constants.BANDIT_DMG);
+            }
         }
     }
 
