@@ -41,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
 
                 if (enemyHealth) {
-                    enemyHealth.GetDamaged(Constants.BASIC_SWORD_DMG);
+                    enemyHealth.GetDamaged(player.playerData.Damage);
                 }
             }
         }

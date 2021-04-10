@@ -12,9 +12,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        SetMaxHealth();
+        ResetPlayerHealth();
+
         player.drainHealth.AddListener(DrainHealth);
         player.enablePlayerCollider.AddListener(EnablePlayerCollider);
         player.resetPlayerHealth.AddListener(ResetPlayerHealth);
+        player.setPlayerHealth.AddListener(SetPlayerHealth);
     }
 
     private void OnDestroy()
@@ -22,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         player.drainHealth.RemoveListener(DrainHealth);
         player.enablePlayerCollider.RemoveListener(EnablePlayerCollider);
         player.resetPlayerHealth.RemoveListener(ResetPlayerHealth);
+        player.setPlayerHealth.RemoveListener(SetPlayerHealth);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,10 +48,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Damage(int damage) {
+    public void Damage(double damage) {
         // damage the character only if it is alive
         if (health.currentHealth > 0) {
-            health.TakeDamage(damage);
+            health.TakeDamage(damage * player.playerData.DefenseMultiplier);
+            player.playerData.CurrentHealth = health.currentHealth;
 
             if (health.currentHealth == 0) {
                 Die();
@@ -54,9 +60,24 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void ResetPlayerHealth() {
-        health.currentHealth = health.maxHealth;
-        health.healthChange.Invoke();
+    private void SetMaxHealth() {
+        health.maxHealth = player.playerData.MaxHealth;
+        health.setMaxHealth.Invoke();
+    }
+
+    private void SetCurrentHealth() {
+        health.currentHealth = player.playerData.CurrentHealth;
+        health.setCurrentHealth.Invoke();
+    }
+
+    private void SetPlayerHealth() {
+        SetMaxHealth();
+        SetCurrentHealth();
+    }
+
+    private void ResetPlayerHealth() {
+        player.playerData.CurrentHealth = player.playerData.MaxHealth;
+        SetCurrentHealth();
     }
 
     private IEnumerator BecomeInvincible() {

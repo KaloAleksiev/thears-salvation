@@ -169,6 +169,7 @@ MonoBehaviour:
   health: {fileID: 1938901595410186533}
   playerCollider: {fileID: 1045841306665683805}
   invincibilityTime: 1
+  fadeBlinkTimes: 3
 --- !u!1 &1938901595410186529
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ GameObject:
   - component: {fileID: 1938901595410186531}
   - component: {fileID: 1938901595410186530}
   - component: {fileID: 1938901595410186528}
+  - component: {fileID: -7100366489432571072}
   m_Layer: 0
   m_Name: PLAYER 1
   m_TagString: Player
@@ -326,13 +328,25 @@ MonoBehaviour:
   drainHealth:
     m_PersistentCalls:
       m_Calls: []
+  resetPlayerHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  enablePlayerCollider:
+    m_PersistentCalls:
+      m_Calls: []
+  setPlayerMaxHealth:
+    m_PersistentCalls:
+      m_Calls: []
   respawn:
     m_PersistentCalls:
       m_Calls: []
   addSoulOrbs:
     m_PersistentCalls:
       m_Calls: []
-  enablePlayerCollider:
+  healthBoost:
+    m_PersistentCalls:
+      m_Calls: []
+  ultraDefense:
     m_PersistentCalls:
       m_Calls: []
   playJumpAnimation:
@@ -451,6 +465,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1938901595410186534}
   animator: {fileID: 1998720061376554027}
+--- !u!114 &-7100366489432571072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938901595410186529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e813aeb57d59984ba0281bcfcc17ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1938901595410186534}
 --- !u!1 &1939006171921838967
 GameObject:
   m_ObjectHideFlags: 0

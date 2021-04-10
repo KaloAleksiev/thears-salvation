@@ -5,8 +5,9 @@ using UnityEngine.Events;
 public class SliderChangeEvent : UnityEvent<bool> { }
 public class Health : MonoBehaviour {
     public int maxHealth;
-    public int currentHealth;
-    public UnityEvent healthChange;
+    public double currentHealth;
+    public UnityEvent setMaxHealth;
+    public UnityEvent setCurrentHealth;
     public SliderChangeEvent sliderChange;
     public Animator animator;
 
@@ -14,10 +15,10 @@ public class Health : MonoBehaviour {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(double damage) {
         animator.SetTrigger("Hurt");
         currentHealth -= damage;
         if (currentHealth < 0) currentHealth = 0;
-        healthChange.Invoke();
+        setCurrentHealth.Invoke();
     }
 }

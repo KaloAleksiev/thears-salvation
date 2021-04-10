@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour {
     public GameObject healthIndicator;
     public float disableTime = 3;
 
-    public void GetDamaged(int damage)
+    public void GetDamaged(double damage)
     {
         health.TakeDamage(damage);
 

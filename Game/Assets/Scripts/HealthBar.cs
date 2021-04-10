@@ -6,23 +6,30 @@ public class HealthBar : MonoBehaviour {
     public Health health;
 
     private void Start() {
-        SetMaxHealth(health.maxHealth);
-        health.healthChange.AddListener(SetHealth);
+        InitialiseHealthBar();
+
+        health.setMaxHealth.AddListener(SetMaxHealth);
+        health.setCurrentHealth.AddListener(SetCurrentHealth);
         health.sliderChange.AddListener(Appear);
     }
 
     private void OnDestroy() {
-        health.healthChange.RemoveListener(SetHealth);
+        health.setMaxHealth.RemoveListener(SetMaxHealth);
+        health.setCurrentHealth.RemoveListener(SetCurrentHealth);
         health.sliderChange.RemoveListener(Appear);
     }
 
-    private void SetMaxHealth(int health) {
-        slider.maxValue = health;
-        slider.value = health;
+    private void InitialiseHealthBar() {
+        SetMaxHealth();
+        slider.value = slider.maxValue;
     }
 
-    private void SetHealth() {
-        slider.value = health.currentHealth;
+    private void SetMaxHealth() {
+        slider.maxValue = health.maxHealth;
+    }
+
+    private void SetCurrentHealth() {
+        slider.value = (float)health.currentHealth;
     }
 
     private void Appear(bool appear)

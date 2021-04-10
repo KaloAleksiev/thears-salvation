@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 public class UpgradesMenu : MonoBehaviour {
@@ -16,7 +18,16 @@ public class UpgradesMenu : MonoBehaviour {
     public GameObject upgradeButton;
     public GameObject upgradeConfirmation;
 
+    private Dictionary<string, UpgradeUnityEvent> upgradeEvents;
     private Upgrade selectedUpgrade;
+
+    private void Start() {
+        upgradeEvents = new Dictionary<string, UpgradeUnityEvent>();
+
+        upgradeEvents.Add("Health Boost", hud.player.healthBoost);
+        upgradeEvents.Add("Ultra Defense", hud.player.ultraDefense);
+        upgradeEvents.Add("Damage Enhance", hud.player.damageEnhance);
+    }
 
     private void OnDisable() {
         // hide upgrades messages
@@ -27,10 +38,10 @@ public class UpgradesMenu : MonoBehaviour {
     public void SetUpgradeDetails(Upgrade upgrade) {
         selectedUpgrade = upgrade;
 
-        iconImage.sprite = upgrade.icon;
-        nameText.text = upgrade.name;
-        descriptionText.text = upgrade.description;
-        costText.text = upgrade.cost.ToString() + " " + Upgrade.CostText;
+        iconImage.sprite = upgrade.Icon;
+        nameText.text = upgrade.Name;
+        descriptionText.text = upgrade.Description;
+        costText.text = upgrade.Cost.ToString() + " " + Upgrade.CostText;
         SetUpgradesDoneText(upgrade);
 
         // hide upgrades messages
@@ -40,9 +51,9 @@ public class UpgradesMenu : MonoBehaviour {
 
     public void ValidateUpgradePurchase() {
         // check if max upgrades are reached
-        if (selectedUpgrade.upgradesDone < selectedUpgrade.maxUpgrades) {
+        if (selectedUpgrade.UpgradesDone < selectedUpgrade.MaxUpgrades) {
             // check if the player has enough soul orbs to purchase the upgrade
-            if (hud.player.playerData.soulOrbs < selectedUpgrade.cost) {
+            if (hud.player.playerData.SoulOrbs < selectedUpgrade.Cost) {
                 // if the player does not have enough soul orbs, display appropriate message
                 notEnoughSoulOrbsMessage.gameObject.SetActive(true);
             } else {
@@ -57,9 +68,18 @@ public class UpgradesMenu : MonoBehaviour {
 
     public void PurchaseUpgrade() {
         // add negative amount of soul orbs from player (i.e. subtract soul orbs from player)
-        hud.player.addSoulOrbs.Invoke(-selectedUpgrade.cost);
+        hud.player.addSoulOrbs.Invoke(-selectedUpgrade.Cost);
+
+        // apply upgrade to player
+        UpgradeUnityEvent upgradeEvent = upgradeEvents[selectedUpgrade.Name];
+
+        if (upgradeEvent != null) {
+            upgradeEvent.Invoke(selectedUpgrade.Modifier);
+        }
+
         // increase the upgrades done for this upgrade
-        selectedUpgrade.upgradesDone++;
+        selectedUpgrade.UpgradesDone++;
+        
         // update upgrade done UI text
         SetUpgradesDoneText(selectedUpgrade);
 
@@ -68,6 +88,6 @@ public class UpgradesMenu : MonoBehaviour {
     }
 
     private void SetUpgradesDoneText(Upgrade upgrade) {
-        upgradesDoneText.text = upgrade.upgradesDone + "/" + upgrade.maxUpgrades + " " + Upgrade.UpgradesDoneText;
+        upgradesDoneText.text = upgrade.UpgradesDone + "/" + upgrade.MaxUpgrades + " " + Upgrade.UpgradesDoneText;
     }
 }
