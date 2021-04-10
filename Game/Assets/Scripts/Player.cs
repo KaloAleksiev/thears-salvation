@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     public UnityEvent respawn;
     public SetSoulOrbsEvent addSoulOrbs;
     public EnablePlayerColliderUnityEvent enablePlayerCollider;
+    public UnityEvent resetPlayerHealth;
 
     //animations
     public UnityEvent playJumpAnimation;
@@ -25,12 +26,6 @@ public class Player : MonoBehaviour {
     public SetIntegerAnimatorEvent setIntegerAnimator;
     public SetFloatAnimatorEvent setFloatAnimator;
     public SetBoolAnimatorEvent setBoolAnimator;
-
-    public void ResetPlayerHealth()
-    {
-        health.currentHealth = health.maxHealth;
-        health.healthChange.Invoke();
-    }
 }
 
 [System.Serializable] public class KnockBackEvent : UnityEvent<Transform> { }

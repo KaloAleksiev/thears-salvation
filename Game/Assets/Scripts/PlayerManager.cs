@@ -53,7 +53,7 @@ public class PlayerManager : MonoBehaviour {
         player.transform.position = respawnPoint.position;
         player.playerMovement.RotateRight();
 
-        player.ResetPlayerHealth();
+        player.resetPlayerHealth.Invoke();
         player.playRecoverAnimation.Invoke();
         player.setIntegerAnimator.Invoke("AnimState", 0);
     }

@@ -14,12 +14,14 @@ public class PlayerHealth : MonoBehaviour
     {
         player.drainHealth.AddListener(DrainHealth);
         player.enablePlayerCollider.AddListener(EnablePlayerCollider);
+        player.resetPlayerHealth.AddListener(ResetPlayerHealth);
     }
 
     private void OnDestroy()
     {
         player.drainHealth.RemoveListener(DrainHealth);
         player.enablePlayerCollider.RemoveListener(EnablePlayerCollider);
+        player.resetPlayerHealth.RemoveListener(ResetPlayerHealth);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +52,11 @@ public class PlayerHealth : MonoBehaviour
                 Die();
             }
         }
+    }
+
+    public void ResetPlayerHealth() {
+        health.currentHealth = health.maxHealth;
+        health.healthChange.Invoke();
     }
 
     private IEnumerator BecomeInvincible() {
