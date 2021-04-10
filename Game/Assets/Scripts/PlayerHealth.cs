@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Damage(int damage) {
+        // damage the character only if it is alive
         if (health.currentHealth > 0) {
             health.TakeDamage(damage);
 
@@ -52,25 +53,24 @@ public class PlayerHealth : MonoBehaviour
     }
 
     private IEnumerator BecomeInvincible() {
-        // disable player collider
-        EnablePlayerCollider(false);
-
+        // make the character become invincible only if it is alive
         if (health.currentHealth > 0) {
+            // disable player collider
+            EnablePlayerCollider(false);
+
+            // make the character blink to indicate it is invincible
             StartCoroutine(FadeBlink());
-        }
-        // wait for 'invincibilityTime' seconds, a.k.a become invincible for 'invincibilityTime'
-        yield return new WaitForSeconds(invincibilityTime);
 
-        // enable player collider only if the character is alive
-        // if the character is dead, the collider must stay disabled so that the corpse cannot be hit
-        if (health.currentHealth > 0) {
-            
+            // wait for 'invincibilityTime' seconds, a.k.a become invincible for 'invincibilityTime'
+            yield return new WaitForSeconds(invincibilityTime);
+
+            // enable player collider
             EnablePlayerCollider(true);
         }
     }
     
     private IEnumerator FadeBlink() {
-        // make character blink 'fadeBlinkTimes' times for 'invincibilityTime' seconds
+        // make the character blink 'fadeBlinkTimes' times for 'invincibilityTime' seconds
         for (int i = 0; i < fadeBlinkTimes; i++) {
             player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
             yield return new WaitForSeconds(invincibilityTime / (fadeBlinkTimes * 2));
