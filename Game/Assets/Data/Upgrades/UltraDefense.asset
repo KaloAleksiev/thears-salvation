@@ -19,3 +19,4 @@ MonoBehaviour:
   cost: 3
   upgradesDone: 0
   maxUpgrades: 4
+  modifier: 0.1

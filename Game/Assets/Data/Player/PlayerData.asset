@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1946be5a6acd88d4086cf42117e28dba, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  currentHealth: 100
+  maxHealth: 100
+  damage: 30
   soulOrbs: 0
+  defenseMultiplier: 1
