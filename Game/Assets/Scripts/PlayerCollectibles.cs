@@ -7,8 +7,7 @@ public class PlayerCollectibles : MonoBehaviour {
         Collectible collectible = collider.GetComponent<Collectible>();
 
         if (collectible) {
-            int collectibleWorth = collectible.worth;
-            player.addSoulOrbs.Invoke(collectibleWorth);
+            player.addSoulOrbs.Invoke(collectible.worth);
 
             Destroy(collider.gameObject);
         }

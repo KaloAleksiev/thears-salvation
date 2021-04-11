@@ -29,22 +29,24 @@ public class PlayerHealth : MonoBehaviour
         player.setPlayerHealth.RemoveListener(SetPlayerHealth);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.CompareTag("Bandit"))
+        if (collider.CompareTag("Bandit"))
         {
             Damage(Constants.BANDIT_DMG);
         }
-        else if (collision.CompareTag("Elemental"))
+        else if (collider.CompareTag("Elemental"))
         {
             Damage(Constants.ELEMENTAL_DMG);
         }
 
-        if (collision.GetComponent<KnockBackDamage>())
+        KnockBackObstacle knockBackObstacle = collider.GetComponent<KnockBackObstacle>();
+
+        if (knockBackObstacle)
         {
-            Damage(Constants.BASIC_SWORD_DMG);
+            Damage(knockBackObstacle.damage);
             StartCoroutine(BecomeInvincible());
-            player.knockBack.Invoke(collision.transform); //knock back player from the collided object
+            player.knockBack.Invoke(collider.transform); //knock back player from the collided object
         }
     }
 
