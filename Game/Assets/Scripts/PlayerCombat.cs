@@ -41,7 +41,7 @@ public class PlayerCombat : MonoBehaviour
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
 
                 if (enemyHealth) {
-                    enemyHealth.GetDamaged(player.playerData.Damage);
+                    enemyHealth.GetDamaged(player.playerData.Damage * player.playerData.DamageMultiplier);
                 }
             }
         }

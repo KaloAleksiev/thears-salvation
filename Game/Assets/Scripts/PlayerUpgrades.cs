@@ -26,6 +26,6 @@ public class PlayerUpgrades : MonoBehaviour {
     }
 
     private void EnhanceDamage(double modifier) {
-        player.playerData.Damage += player.playerData.Damage * modifier;
+        player.playerData.DamageMultiplier += modifier;
     }
 }
