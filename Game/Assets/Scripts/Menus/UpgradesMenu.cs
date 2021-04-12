@@ -13,7 +13,7 @@ public class UpgradesMenu : MonoBehaviour {
     public TextMeshProUGUI costText;
     public TextMeshProUGUI upgradesDoneText;
 
-    public TextMeshProUGUI notEnoughSoulOrbsMessage;
+    public TextMeshProUGUI requirementMessage;
     public TextMeshProUGUI maxUpgradesReachedMessage;
     public GameObject upgradeButton;
     public GameObject upgradeConfirmation;
@@ -31,7 +31,7 @@ public class UpgradesMenu : MonoBehaviour {
 
     private void OnDisable() {
         // hide upgrades messages
-        notEnoughSoulOrbsMessage.gameObject.SetActive(false);
+        requirementMessage.gameObject.SetActive(false);
         maxUpgradesReachedMessage.gameObject.SetActive(false);
     }
 
@@ -40,12 +40,14 @@ public class UpgradesMenu : MonoBehaviour {
 
         iconImage.sprite = upgrade.Icon;
         nameText.text = upgrade.Name;
+        nameText.color = upgrade.Color;
         descriptionText.text = upgrade.Description;
         costText.text = upgrade.Cost.ToString() + " " + Upgrade.CostText;
+        requirementMessage.text = "Requires " + upgrade.Cost.ToString() + " Soul Orbs";
         SetUpgradesDoneText(upgrade);
 
         // hide upgrades messages
-        notEnoughSoulOrbsMessage.gameObject.SetActive(false);
+        requirementMessage.gameObject.SetActive(false);
         maxUpgradesReachedMessage.gameObject.SetActive(false);
     }
 
@@ -55,7 +57,7 @@ public class UpgradesMenu : MonoBehaviour {
             // check if the player has enough soul orbs to purchase the upgrade
             if (hud.player.playerData.SoulOrbs < selectedUpgrade.Cost) {
                 // if the player does not have enough soul orbs, display appropriate message
-                notEnoughSoulOrbsMessage.gameObject.SetActive(true);
+                requirementMessage.gameObject.SetActive(true);
             } else {
                 upgradeConfirmation.SetActive(true);
                 upgradeButton.SetActive(false);

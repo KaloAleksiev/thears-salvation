@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5622d24b79a98c47acb9bca1d5be0d3, type: 3}
   m_Name: HealthBoost
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 5332865230346846533, guid: f8a2f97a16184664db9455bab6a4ed49, type: 3}
+  color: {r: 0.43921572, g: 0.7843138, b: 0.1254902, a: 1}
   name: Health Boost
   description: "Adds 25HP to the player\u2019s health, max +100HP"
   cost: 3

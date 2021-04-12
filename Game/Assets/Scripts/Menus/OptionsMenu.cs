@@ -37,7 +37,7 @@ public class OptionsMenu : MonoBehaviour {
         for (int i = 0; i < resolutions.Length; i++) {
             Resolution resolution = resolutions[i];
 
-            string option = resolution.width + " x " + resolution.height; //e.g. 1920 x 1080
+            string option = resolution.width + " x " + resolution.height + GetAspectRatio(resolution.width, resolution.height); //e.g. 1920 x 1080 [16:9]
             options.Add(option);
 
             // get index of current screen resolution
@@ -50,5 +50,23 @@ public class OptionsMenu : MonoBehaviour {
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+    }
+
+    // Function to reduce a fraction to its lowest form
+    // Source: https://www.geeksforgeeks.org/reduce-the-fraction-to-its-lowest-form/
+    private string GetAspectRatio(int x, int y) {
+        int d = Gcd(x, y);
+
+        x /= d;
+        y /= d;
+
+        return " [" + x + ":" + y + "]";
+    }
+
+    private int Gcd(int a, int b) {
+        if (b == 0)
+            return a;
+        return Gcd(b, a % b);
+
     }
 }

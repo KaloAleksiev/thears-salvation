@@ -20,7 +20,7 @@ public class HUDManager : MonoBehaviour {
     }
 
     private void UpdateSoulOrbsUI() {
-        soulOrbsUI.text = "Soul Orbs: " + player.playerData.SoulOrbs;
+        soulOrbsUI.text = player.playerData.SoulOrbs.ToString();
         soulOrbsUpgradesUI.text = player.playerData.SoulOrbs.ToString();
     }
 }

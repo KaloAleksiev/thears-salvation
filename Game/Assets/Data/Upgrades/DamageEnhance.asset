@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5622d24b79a98c47acb9bca1d5be0d3, type: 3}
   m_Name: DamageEnhance
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: -2148738754041077324, guid: f8a2f97a16184664db9455bab6a4ed49, type: 3}
+  color: {r: 0.9333334, g: 0.6627451, b: 0.3019608, a: 1}
   name: Damage Enhance
   description: ' Adds 5% to the damage dealt by the player on hit, max +20%'
   cost: 3
