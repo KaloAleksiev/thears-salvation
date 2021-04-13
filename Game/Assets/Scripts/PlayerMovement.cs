@@ -11,8 +11,6 @@ public class PlayerMovement : MonoBehaviour {
     public Transform feet;
     public LayerMask groundLayer;
     private Sensor_Bandit m_groundSensor;
-    [SerializeField] private Transform m_CeilingCheck;
-    [SerializeField] private Collider2D m_CrouchDisableCollider;
 
     [Header("Horizontal Movement")]
     public float defaultMovementSpeed = 10f;
@@ -31,15 +29,6 @@ public class PlayerMovement : MonoBehaviour {
     public float horizontalKnock = 3f;
     public float verticalKnock = 12f;
     public float knockBackTime = 0.6f;
-
-    [System.Serializable]
-    public class BoolEvent : UnityEvent<bool> { }
-
-    [Header("Crouch")]
-    const float k_CeilingRadius = .2f;
-    public BoolEvent OnCrouchEvent;
-    private bool m_wasCrouching = false;
-    private bool crouch = false;
 
     [Header("Grounded")]
     public float groundRadius = 0.1f;
@@ -79,12 +68,6 @@ public class PlayerMovement : MonoBehaviour {
         player.knockBack.RemoveListener(Knockback);
     }
 
-    private void Awake()
-    {
-        if (OnCrouchEvent == null)
-            OnCrouchEvent = new BoolEvent();
-    }
-
     private void Update() {
         mx = Input.GetAxis("Horizontal"); //set the movement on the x-axis to what the player inputs (A, D, Left Arrow Key, Right Arrow Key)
 
@@ -98,16 +81,6 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
-        }
-
-        if (Input.GetButtonDown("Crouch"))
-        {
-            crouch = true;
-        }
-
-        if (Input.GetButtonUp("Crouch"))
-        {
-            crouch = false;
         }
 
         //Check if character just landed on the ground
@@ -129,31 +102,9 @@ public class PlayerMovement : MonoBehaviour {
         player.setFloatAnimator.Invoke("AirSpeed", rb.velocity.y);
 
         // -- Handle Animations --
-        //Death
-        if (Input.GetKeyDown("z")) {
-            if (!m_isDead)
-                player.playDeathAnimation.Invoke();
-            else
-                player.playRecoverAnimation.Invoke();
-
-            m_isDead = !m_isDead;
-        }
-
-        //Hurt
-        else if (Input.GetKeyDown("q"))
-            player.playHurtAnimation.Invoke();
-
-        //Change between idle and combat idle
-        else if (Input.GetKeyDown("f"))
-            m_combatIdle = !m_combatIdle;
-
         //Run
-        else if (Mathf.Abs(mx) > Mathf.Epsilon)
+        if (Mathf.Abs(mx) > Mathf.Epsilon)
             player.setIntegerAnimator.Invoke("AnimState", 2);
-
-        //Combat Idle
-        else if (m_combatIdle)
-            player.setIntegerAnimator.Invoke("AnimState", 1);
 
         //Idle
         else
@@ -183,7 +134,6 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(new Vector2(mx * airSpeed, 0));
         }
 
-        Crouch();
         CheckWallHit();
         CheckGrounded();
         CheckIfBelowGround();
@@ -268,40 +218,6 @@ public class PlayerMovement : MonoBehaviour {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumpCounter++;
             jump = false;
-        }
-    }
-
-    private void Crouch()
-    {
-        if (isGrounded)
-        {
-            if (crouch)
-            {
-                if (!m_wasCrouching)
-                {
-                    m_wasCrouching = true;
-                    OnCrouchEvent.Invoke(true);
-                }
-
-                // Reduce the speed by the crouchSpeed multiplier
-                movementSpeed = 3.6f;
-                // Disable one of the colliders when crouching
-                if (m_CrouchDisableCollider != null)
-                    m_CrouchDisableCollider.enabled = false;
-            }
-            else
-            {
-                movementSpeed = defaultMovementSpeed;
-                // Enable the collider when not crouching
-                if (m_CrouchDisableCollider != null)
-                    m_CrouchDisableCollider.enabled = true;
-
-                if (m_wasCrouching)
-                {
-                    m_wasCrouching = false;
-                    OnCrouchEvent.Invoke(false);
-                }
-            }
         }
     }
 }

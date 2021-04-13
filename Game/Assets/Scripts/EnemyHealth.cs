@@ -4,8 +4,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour {
     public Animator animator;
     public Health health;
-    public GameObject itemPrefab;
-    public GameObject healthIndicator;
+    public GameObject[] swords;
     public float disableTime = 3;
 
     public void GetDamaged(double damage)
@@ -26,7 +25,9 @@ public class EnemyHealth : MonoBehaviour {
         health.sliderChange.Invoke(false);
         StartCoroutine(EnableEnemy(false));
         //Destroy(gameObject);
-        Instantiate(itemPrefab, transform.position, Quaternion.identity);
+
+        GameObject sword = swords[Random.Range(0, swords.Length)];
+        Instantiate(sword, transform.position, Quaternion.identity);
     }
 
     public IEnumerator EnableEnemy(bool appear)

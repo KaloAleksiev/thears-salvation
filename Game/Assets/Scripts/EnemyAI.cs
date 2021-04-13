@@ -18,7 +18,9 @@ public class EnemyAI : MonoBehaviour
     public LayerMask enemyLayers;
     public float attackRate = 1f;
     public float detectionRange = 12f;
-    
+    float startAttackRange = 2.5f;
+
+
     float nextAttackTime = 0f;
     float attackDuration = 0.5f;
 
@@ -33,6 +35,8 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     RaycastHit2D hit;
+
+    Vector2 direction;
 
     void Start()
     {
@@ -80,12 +84,17 @@ public class EnemyAI : MonoBehaviour
     IEnumerator StartAttacking()
     {
         yield return new WaitForSeconds(attackDuration);
-        Collider2D hitEnemy = Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayers);
-        if (hitEnemy != null) {
-            PlayerHealth playerHealth = hitEnemy.GetComponent<PlayerHealth>();
+        if (animator.GetInteger("AnimState") != 3)
+        {
+            Collider2D hitEnemy = Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayers);
+            if (hitEnemy != null)
+            {
+                PlayerHealth playerHealth = hitEnemy.GetComponent<PlayerHealth>();
 
-            if (playerHealth) {
-                playerHealth.Damage(Constants.BANDIT_DMG);
+                if (playerHealth)
+                {
+                    playerHealth.Damage(Constants.BANDIT_DMG);
+                }
             }
         }
     }
@@ -126,7 +135,7 @@ public class EnemyAI : MonoBehaviour
                     reachedEndOfPath = false;
                 }
 
-                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
                 Vector2 force = direction * speed * Time.deltaTime;
 
                 float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
@@ -138,8 +147,18 @@ public class EnemyAI : MonoBehaviour
 
                 if (hit.collider)
                 {
-                    if (distanceToPlayer < 3)
+                    if (distanceToPlayer < startAttackRange && target.GetComponent<Health>().currentHealth > 0)
                     {
+                        if (direction.x > 0.01 && !isFacingRight)
+                        {
+                            Flip();
+                        }
+                        
+                        if (direction.x < -0.01 && isFacingRight)
+                        {
+                            Flip();
+                        }
+
                         if (Time.time >= nextAttackTime)
                         {
                             Attack();
@@ -172,9 +191,12 @@ public class EnemyAI : MonoBehaviour
                 {
                     rb.velocity = Vector2.zero;
                     animator.SetInteger("AnimState", 1);
-                    if (distance < nextWaypointDistance)
+                    if (direction.x > 0 && !isFacingRight)
                     {
-                        currentWaypoint++;
+                        Flip();
+                    }
+                    else if (direction.x < 0 && isFacingRight)
+                    {
                         Flip();
                     }
                 }
