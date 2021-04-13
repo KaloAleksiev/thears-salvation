@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public PolygonCollider2D playerCollider;
     public float invincibilityTime;
     public int fadeBlinkTimes = 3;
+    public Color fadeBlinkColor;
 
     private void Start()
     {
@@ -102,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator FadeBlink() {
         // make the character blink 'fadeBlinkTimes' times for 'invincibilityTime' seconds
         for (int i = 0; i < fadeBlinkTimes; i++) {
-            player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+            player.GetComponent<SpriteRenderer>().color = fadeBlinkColor;
             yield return new WaitForSeconds(invincibilityTime / (fadeBlinkTimes * 2));
             player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(invincibilityTime / (fadeBlinkTimes * 2));

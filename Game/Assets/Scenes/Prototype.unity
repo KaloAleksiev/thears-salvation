@@ -3808,7 +3808,27 @@ PrefabInstance:
     - target: {fileID: 8798616124948841102, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
       propertyPath: fadeBlinkTimes
-      value: 10
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798616124948841102, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: fadeBlinkColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798616124948841102, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: fadeBlinkColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798616124948841102, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: fadeBlinkColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798616124948841102, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: fadeBlinkColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8798616124948841102, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}

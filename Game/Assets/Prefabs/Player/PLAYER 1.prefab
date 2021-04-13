@@ -169,7 +169,8 @@ MonoBehaviour:
   health: {fileID: 1938901595410186533}
   playerCollider: {fileID: 1045841306665683805}
   invincibilityTime: 1
-  fadeBlinkTimes: 3
+  fadeBlinkTimes: 8
+  fadeBlinkColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1938901595410186529
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +335,7 @@ MonoBehaviour:
   enablePlayerCollider:
     m_PersistentCalls:
       m_Calls: []
-  setPlayerMaxHealth:
+  setPlayerHealth:
     m_PersistentCalls:
       m_Calls: []
   respawn:
@@ -347,6 +348,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ultraDefense:
+    m_PersistentCalls:
+      m_Calls: []
+  damageEnhance:
     m_PersistentCalls:
       m_Calls: []
   playJumpAnimation:
@@ -387,7 +391,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  healthChange:
+  setMaxHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  setCurrentHealth:
     m_PersistentCalls:
       m_Calls: []
   sliderChange:
@@ -412,8 +419,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  m_CeilingCheck: {fileID: 251127993758147836}
-  m_CrouchDisableCollider: {fileID: 0}
   defaultMovementSpeed: 10
   movementSpeed: 10
   isFacingRight: 1
@@ -425,9 +430,6 @@ MonoBehaviour:
   horizontalKnock: 3
   verticalKnock: 12
   knockBackTime: 0.6
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
   groundRadius: 0.1
   wallJumpTime: 0.2
   wallSlideSpeed: 0.3
@@ -609,3 +611,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1938901595410186534}
+  swordImage: {fileID: 0}
