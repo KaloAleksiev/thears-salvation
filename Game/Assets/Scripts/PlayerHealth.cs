@@ -107,7 +107,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void DrainHealth()
     {
-        Damage(health.currentHealth);
+        Damage(health.currentHealth / player.playerData.DamageMultiplier);
     }
 
     private void Die()

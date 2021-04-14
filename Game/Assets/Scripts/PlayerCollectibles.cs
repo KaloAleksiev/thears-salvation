@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class PlayerCollectibles : MonoBehaviour {
     public Player player;
     public Image swordImage;
-    public Collider2D swordCollider;
+
+    private Collider2D swordCollider;
 
     private void Start()
     {
