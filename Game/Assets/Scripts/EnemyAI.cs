@@ -19,10 +19,12 @@ public class EnemyAI : MonoBehaviour
     public LayerMask enemyLayers;
     public float attackRate = 1f;
     public float detectionRange = 12f;
-    float startAttackRange = 2.5f;
+    public float startAttackRange;
+    public float attackDuration;
+
+    public float size;
 
     float nextAttackTime = 0f;
-    float attackDuration = 0.5f;
 
     Path path;
     int currentWaypoint = 0;
@@ -73,6 +75,7 @@ public class EnemyAI : MonoBehaviour
 
     void Attack()
     {
+        animator.SetBool("IsAttacking", true);
         animator.SetTrigger("Attack");
         StartCoroutine(StartAttacking());
     }
@@ -93,6 +96,7 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
+        animator.SetBool("IsAttacking", false);
     }
 
     private void OnDrawGizmosSelected()
@@ -140,6 +144,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     if (distanceToPlayer < startAttackRange && target.GetComponent<Health>().currentHealth > 0)
                     {
+                        animator.SetInteger("AnimState", 1);
                         if (direction.x > 0.01 && !isFacingRight)
                         {
                             Flip();
@@ -158,15 +163,16 @@ public class EnemyAI : MonoBehaviour
                     }
                     else
                     {
+                        animator.SetInteger("AnimState", 2);
                         if (rb.velocity.x > 0.4f)
                         {
-                            enemyTransform.localScale = new Vector3(-2f, 2f, 1f);
+                            enemyTransform.localScale = new Vector3(-size, size, 1f);
                             isFacingRight = true;
                             animator.SetInteger("AnimState", 2);
                         }
                         else if (rb.velocity.x < -0.4f)
                         {
-                            enemyTransform.localScale = new Vector3(2f, 2f, 1f);
+                            enemyTransform.localScale = new Vector3(size, size, 1f);
                             isFacingRight = false;
                             animator.SetInteger("AnimState", 2);
                         }
@@ -198,13 +204,13 @@ public class EnemyAI : MonoBehaviour
                 animator.SetInteger("AnimState", 1);
                 if (isFacingRight && wasFacingRight)
                 {
-                    enemyTransform.localScale = new Vector3(2f, 2f, 1f);
+                    enemyTransform.localScale = new Vector3(size, size, 1f);
                     isFacingRight = false;
                     wasFacingRight = true;
                 }
                 else
                 {
-                    enemyTransform.localScale = new Vector3(-2f, 2f, 1f);
+                    enemyTransform.localScale = new Vector3(-size, size, 1f);
                     isFacingRight = true;
                     wasFacingRight = false;
                 }

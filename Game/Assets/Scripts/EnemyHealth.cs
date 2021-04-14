@@ -6,7 +6,7 @@ public class EnemyHealth : MonoBehaviour {
     public Animator animator;
     public Health health;
     public Element element;
-    public GameObject[] swords;
+    public GameObject[] items;
     public float disableTime = 2;
 
     public void GetDamaged(double damage)
@@ -37,8 +37,17 @@ public class EnemyHealth : MonoBehaviour {
         yield return new WaitForSeconds(disableTime);
         gameObject.GetComponent<SpriteRenderer>().enabled = appear;
 
-        GameObject sword = swords[Random.Range(0, swords.Length)];
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y + 0.8f, transform.position.z);
-        Instantiate(sword, spawnPoint, Quaternion.identity);
+        if (items.Length == 4)
+        {
+            GameObject item = items[Random.Range(0, items.Length)];
+            Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            Instantiate(item, spawnPoint, Quaternion.identity);
+        }
+        else if (items.Length == 1)
+        {
+            GameObject item = items[0];
+            Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+            Instantiate(item, spawnPoint, Quaternion.identity);
+        }
     }
 }

@@ -93,7 +93,10 @@ public class PlayerCombat : MonoBehaviour
         for (int i = 0; i < player.playerData.BurnTicks; i++)
         {
             yield return new WaitForSeconds(1);
-            enemyHealth.GetDamaged(10 * player.playerData.DamageMultiplier);
+            if (enemyHealth.health.currentHealth > 0)
+            {
+                enemyHealth.GetDamaged(10 * player.playerData.DamageMultiplier);
+            }
         }
     }
 
