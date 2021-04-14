@@ -5,6 +5,8 @@ public class PlayerManager : MonoBehaviour {
     public Player player;
     public Transform respawnPoint;
     public HUDManager hud;
+    public float beforeRespawnPlayerTime;
+    public float disablePlayerAfterRespawnTime;
 
     private void Start() {
         hud.updateSoulOrbsUI.Invoke();
@@ -24,10 +26,10 @@ public class PlayerManager : MonoBehaviour {
 
     public IEnumerator RespawnRoutine() {
         Activate(false);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(beforeRespawnPlayerTime);
 
         Reset();
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(disablePlayerAfterRespawnTime);
 
         Activate(true);
     }
@@ -44,7 +46,6 @@ public class PlayerManager : MonoBehaviour {
         player.playerMovement.enabled = isActivated;
         player.playerCombat.enabled = isActivated;
         player.playerHealth.enabled = isActivated;
-        player.health.enabled = isActivated;
     }
 
     private void Reset() {
@@ -54,7 +55,6 @@ public class PlayerManager : MonoBehaviour {
 
         player.resetPlayerHealth.Invoke();
         player.playRecoverAnimation.Invoke();
-        player.setIntegerAnimator.Invoke("AnimState", 0);
     }
 
     public void AddSoulOrbs(int amount) {
