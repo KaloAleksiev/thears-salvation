@@ -2,18 +2,23 @@
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour {
+    public Enemy enemy;
     public Animator animator;
     public Health health;
+    public Element element;
     public GameObject[] swords;
-    public float disableTime = 3;
+    public float disableTime = 2;
 
     public void GetDamaged(double damage)
     {
-        health.TakeDamage(damage);
-
-        if (health.currentHealth == 0)
+        if (health.currentHealth > 0)
         {
-            Die();
+            health.TakeDamage(damage);
+
+            if (health.currentHealth == 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -25,14 +30,15 @@ public class EnemyHealth : MonoBehaviour {
         health.sliderChange.Invoke(false);
         StartCoroutine(EnableEnemy(false));
         //Destroy(gameObject);
-
-        GameObject sword = swords[Random.Range(0, swords.Length)];
-        Instantiate(sword, transform.position, Quaternion.identity);
     }
 
     public IEnumerator EnableEnemy(bool appear)
     {
         yield return new WaitForSeconds(disableTime);
         gameObject.GetComponent<SpriteRenderer>().enabled = appear;
+
+        GameObject sword = swords[Random.Range(0, swords.Length)];
+        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y + 0.8f, transform.position.z);
+        Instantiate(sword, spawnPoint, Quaternion.identity);
     }
 }

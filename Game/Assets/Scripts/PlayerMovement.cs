@@ -45,9 +45,6 @@ public class PlayerMovement : MonoBehaviour {
     private float jumpCoolDown;
     private bool isGrounded = false;
 
-    private bool m_combatIdle = false;
-    private bool m_isDead = false;
-
     private RaycastHit2D isWallHit; //used to check if the character has collided with a wall horizontally
     private bool isWallSliding = false;
     private float wallJumpCoolDown;

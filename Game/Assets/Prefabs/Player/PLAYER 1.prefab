@@ -147,12 +147,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.33708668, y: 1.223072}
-      - {x: -0.23159939, y: 1.223957}
-      - {x: -0.23087019, y: 0.46001542}
+    - - {x: 0.36421394, y: 1.223072}
+      - {x: -0.2548514, y: 1.223957}
+      - {x: -0.25412172, y: 0.46776617}
       - {x: -0.025001049, y: 0.07834339}
       - {x: 0.11654389, y: 0.07842398}
-      - {x: 0.33636904, y: 0.4626891}
+      - {x: 0.3634963, y: 0.4743151}
 --- !u!114 &8798616124948841102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,3 +612,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1938901595410186534}
   swordImage: {fileID: 0}
+  swordCollider: {fileID: 0}

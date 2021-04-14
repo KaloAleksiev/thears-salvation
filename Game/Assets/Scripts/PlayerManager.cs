@@ -45,7 +45,6 @@ public class PlayerManager : MonoBehaviour {
         player.playerCombat.enabled = isActivated;
         player.playerHealth.enabled = isActivated;
         player.health.enabled = isActivated;
-        player.enablePlayerCollider.Invoke(isActivated);
     }
 
     private void Reset() {

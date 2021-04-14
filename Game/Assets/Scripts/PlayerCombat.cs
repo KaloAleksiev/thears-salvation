@@ -9,7 +9,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.7f;
     public LayerMask enemyLayers;
 
-    public float attackRate = 2.5f;
+    public float attackRate = 2;
     float nextAttackTime = 0f;
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                nextAttackTime = Time.time + 1f / (attackRate * player.playerData.ActiveSword.AttackSpeedModifier);
             }
         }
     }
@@ -40,11 +40,70 @@ public class PlayerCombat : MonoBehaviour
             {
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
 
-                if (enemyHealth) {
-                    enemyHealth.GetDamaged(player.playerData.ActiveSword.Damage * player.playerData.DamageMultiplier);
+                if (enemyHealth) 
+                {
+                    DealDamage(enemyHealth);
                 }
             }
         }
+    }
+
+    public void DealDamage(EnemyHealth enemyHealth)
+    {
+        Element enemyElement = enemyHealth.element;
+        if (enemyElement)
+        {
+            if (enemyElement == player.playerData.ActiveSword.Element.WeakerElement)
+            {
+                enemyHealth.GetDamaged(player.playerData.ActiveSword.Damage * player.playerData.DamageMultiplier * player.playerData.ActiveSword.Element.DamageIncreaseModifier);
+                DoSpecialEffects(enemyHealth);
+            }
+            else if (enemyElement == player.playerData.ActiveSword.Element.StrongerElement)
+            {
+                enemyHealth.GetDamaged(player.playerData.ActiveSword.Damage * player.playerData.DamageMultiplier * player.playerData.ActiveSword.Element.DamageDecreaseModifier);
+                DoSpecialEffects(enemyHealth);
+            }
+            else
+            {
+                enemyHealth.GetDamaged(player.playerData.ActiveSword.Damage * player.playerData.DamageMultiplier);
+                DoSpecialEffects(enemyHealth);
+            }
+        }
+        else
+        {
+            enemyHealth.GetDamaged(player.playerData.ActiveSword.Damage * player.playerData.DamageMultiplier);
+            DoSpecialEffects(enemyHealth);
+        }
+    }
+
+    public void DoSpecialEffects(EnemyHealth enemyHealth)
+    {
+        if (player.playerData.ActiveSword.name == "Fire Sword")
+        {
+            StartCoroutine(BurnEnemies(enemyHealth));
+        }
+        else if (player.playerData.ActiveSword.name == "Water Sword")
+        {
+            StartCoroutine(ReduceSpeed(enemyHealth));
+        }
+    }
+
+    IEnumerator BurnEnemies(EnemyHealth enemyHealth)
+    {
+        for (int i = 0; i < player.playerData.BurnTicks; i++)
+        {
+            yield return new WaitForSeconds(1);
+            enemyHealth.GetDamaged(10 * player.playerData.DamageMultiplier);
+        }
+    }
+
+    IEnumerator ReduceSpeed(EnemyHealth enemyHealth)
+    {
+        float originalSpeed = enemyHealth.enemy.enemyAI.speed;
+        float slowedSpeed = enemyHealth.enemy.enemyAI.speed * player.playerData.SlowModifier;
+        enemyHealth.enemy.enemyAI.speed = slowedSpeed;
+        yield return new WaitForSeconds(3);
+        enemyHealth.enemy.enemyAI.speed = originalSpeed;
     }
 
     private void OnDrawGizmosSelected()

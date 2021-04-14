@@ -4,17 +4,24 @@ using UnityEngine.UI;
 public class PlayerCollectibles : MonoBehaviour {
     public Player player;
     public Image swordImage;
-    private bool allowPickUp = false;
+    public Collider2D swordCollider;
+
+    private void Start()
+    {
+        swordImage.sprite = player.playerData.ActiveSword.Image;
+    }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (swordCollider && Input.GetKeyDown(KeyCode.F))
         {
-            allowPickUp = true;
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            allowPickUp = false;
+            PickUp pickUp = swordCollider.GetComponent<PickUp>();
+            if (pickUp)
+            {
+                player.playerData.ActiveSword = pickUp.sword;
+                swordImage.sprite = pickUp.sword.Image;
+                Destroy(swordCollider.gameObject);
+            }
         }
     }
 
@@ -25,18 +32,20 @@ public class PlayerCollectibles : MonoBehaviour {
             player.addSoulOrbs.Invoke(collectible.worth);
             Destroy(collider.gameObject);
         }
-    }
 
-    private void OnTriggerStay2D(Collider2D collider)
-    {
         PickUp pickUp = collider.GetComponent<PickUp>();
-        if (pickUp && Input.GetKeyDown(KeyCode.F))
+        if (pickUp)
         {
-            player.playerData.ActiveSword = pickUp.sword;
-            swordImage.sprite = pickUp.sword.Image;
-            Destroy(collider.gameObject);
+            swordCollider = collider;
         }
     }
 
-
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        PickUp pickUp = collider.GetComponent<PickUp>();
+        if (pickUp)
+        {
+            swordCollider = null;
+        }
+    }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4977b2b69c21d4846a46b5bd206ad21b, type: 3}
+  m_Name: Fire
+  m_EditorClassIdentifier: 
+  name: Fire
+  weakerElement: {fileID: 11400000, guid: fc429567c148bc74c80ff3deff84aeaa, type: 2}
+  strongerElement: {fileID: 11400000, guid: 08ab3bd46cacbea4a8eab2f7d9e01da9, type: 2}
+  damageIncreaseModifier: 1.2
+  damageDecreaseModifier: 0.8

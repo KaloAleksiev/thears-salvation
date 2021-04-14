@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Water Sword
   m_EditorClassIdentifier: 
   name: Water Sword
+  element: {fileID: 11400000, guid: 08ab3bd46cacbea4a8eab2f7d9e01da9, type: 2}
   damage: 45
   attackSpeedModifier: 1
   image: {fileID: 21300000, guid: 9978cdb4a096b9f4aaa7f822c548644e, type: 3}

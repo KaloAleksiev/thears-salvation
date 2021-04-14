@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Earth Sword
   m_EditorClassIdentifier: 
   name: Earth Sword
+  element: {fileID: 11400000, guid: f1301c8d3f0d6b4448c50d5bf8ccde2a, type: 2}
   damage: 60
   attackSpeedModifier: 0.8
   image: {fileID: 21300000, guid: 8ba4fbef257c1d64aa4261352183f85f, type: 3}

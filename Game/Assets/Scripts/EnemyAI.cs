@@ -5,13 +5,14 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
+    public Enemy enemy;
     public Transform target;
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public Animator animator;
     public LayerMask groundLayers;
     public Transform groundCheck;
-    public Transform enemy;
+    public Transform enemyTransform;
 
     public Transform attackPoint;
     public float attackRange = 0.7f;
@@ -20,13 +21,11 @@ public class EnemyAI : MonoBehaviour
     public float detectionRange = 12f;
     float startAttackRange = 2.5f;
 
-
     float nextAttackTime = 0f;
     float attackDuration = 0.5f;
 
     Path path;
     int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
     float distanceToPlayer;
 
     bool isFacingRight = false;
@@ -74,10 +73,7 @@ public class EnemyAI : MonoBehaviour
 
     void Attack()
     {
-        //Play animation
         animator.SetTrigger("Attack");
-
-        //Damage enemies
         StartCoroutine(StartAttacking());
     }
 
@@ -93,7 +89,7 @@ public class EnemyAI : MonoBehaviour
 
                 if (playerHealth)
                 {
-                    playerHealth.Damage(Constants.BANDIT_DMG);
+                    playerHealth.Damage(enemy.enemyData.Damage);
                 }
             }
         }
@@ -127,12 +123,7 @@ public class EnemyAI : MonoBehaviour
 
                 if (currentWaypoint >= path.vectorPath.Count)
                 {
-                    reachedEndOfPath = true;
                     return;
-                }
-                else
-                {
-                    reachedEndOfPath = false;
                 }
 
                 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
@@ -169,13 +160,13 @@ public class EnemyAI : MonoBehaviour
                     {
                         if (rb.velocity.x > 0.4f)
                         {
-                            enemy.localScale = new Vector3(-2f, 2f, 1f);
+                            enemyTransform.localScale = new Vector3(-2f, 2f, 1f);
                             isFacingRight = true;
                             animator.SetInteger("AnimState", 2);
                         }
                         else if (rb.velocity.x < -0.4f)
                         {
-                            enemy.localScale = new Vector3(2f, 2f, 1f);
+                            enemyTransform.localScale = new Vector3(2f, 2f, 1f);
                             isFacingRight = false;
                             animator.SetInteger("AnimState", 2);
                         }
@@ -207,13 +198,13 @@ public class EnemyAI : MonoBehaviour
                 animator.SetInteger("AnimState", 1);
                 if (isFacingRight && wasFacingRight)
                 {
-                    enemy.localScale = new Vector3(2f, 2f, 1f);
+                    enemyTransform.localScale = new Vector3(2f, 2f, 1f);
                     isFacingRight = false;
                     wasFacingRight = true;
                 }
                 else
                 {
-                    enemy.localScale = new Vector3(-2f, 2f, 1f);
+                    enemyTransform.localScale = new Vector3(-2f, 2f, 1f);
                     isFacingRight = true;
                     wasFacingRight = false;
                 }

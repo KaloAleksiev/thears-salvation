@@ -32,15 +32,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Bandit"))
-        {
-            Damage(Constants.BANDIT_DMG);
-        }
-        else if (collider.CompareTag("Elemental"))
-        {
-            Damage(Constants.ELEMENTAL_DMG);
-        }
-
         KnockBackObstacle knockBackObstacle = collider.GetComponent<KnockBackObstacle>();
 
         if (knockBackObstacle)

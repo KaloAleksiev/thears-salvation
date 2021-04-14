@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fire Sword
   m_EditorClassIdentifier: 
   name: Fire Sword
+  element: {fileID: 11400000, guid: 551188f8a486079449c04a99c8226f39, type: 2}
   damage: 40
   attackSpeedModifier: 1
   image: {fileID: 21300000, guid: 6fbde377688cb504d94f45a3d594ae9e, type: 3}
