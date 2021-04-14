@@ -37,6 +37,14 @@ public class Player : MonoBehaviour {
     public SetIntegerAnimatorEvent setIntegerAnimator;
     public SetFloatAnimatorEvent setFloatAnimator;
     public SetBoolAnimatorEvent setBoolAnimator;
+
+    //sound events
+    public UnityEvent playJumpSound;
+    public LandingSoundEvent playLandingSound;
+    public UnityEvent playFootstepSound;
+    public UnityEvent playPainSound;
+    public UnityEvent playDeathSound;
+    public UnityEvent playSpawnSound;
 }
 
 [System.Serializable] public class KnockBackEvent : UnityEvent<Transform> { }
@@ -46,3 +54,4 @@ public class Player : MonoBehaviour {
 [System.Serializable] public class SetBoolAnimatorEvent : UnityEvent<string, bool> { }
 [System.Serializable] public class EnablePlayerColliderUnityEvent : UnityEvent<bool> { }
 [System.Serializable] public class UpgradeUnityEvent : UnityEvent<double> { }
+[System.Serializable] public class LandingSoundEvent : UnityEvent<float, float> { }

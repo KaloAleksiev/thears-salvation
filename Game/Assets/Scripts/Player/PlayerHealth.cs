@@ -47,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
         if (health.currentHealth > 0) {
             health.TakeDamage(damage * player.playerData.DefenseMultiplier);
             player.playerData.CurrentHealth = health.currentHealth;
+            player.playPainSound.Invoke();
 
             if (health.currentHealth == 0) {
                 Die();
@@ -112,6 +113,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        player.playDeathSound.Invoke();
         player.playDeathAnimation.Invoke();
         player.respawn.Invoke();
     }

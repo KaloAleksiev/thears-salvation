@@ -52,12 +52,22 @@ public class PlayerMovement : MonoBehaviour {
     private bool knockedBack = false;
     private bool isKnockedBackRight;
 
+    [Header("Footsteps sound")]
+    [SerializeField] private bool m_IsWalking;
+    [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
+    [SerializeField] private float m_StepInterval;
+    private float m_NextStep;
+    private float m_StepCycle;
+
     private void Start()
     {
         movementSpeed = defaultMovementSpeed;
         rb = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_Bandit>();
         player.knockBack.AddListener(Knockback);
+
+        m_StepCycle = 0f;
+        m_NextStep = m_StepCycle / 2f;
     }
 
     private void OnDestroy()
@@ -86,6 +96,7 @@ public class PlayerMovement : MonoBehaviour {
             isGrounded = true;
             jumpCounter = 0;
             player.setBoolAnimator.Invoke("Grounded", isGrounded);
+            player.playLandingSound.Invoke(m_StepCycle, m_NextStep);
         }
 
         //Check if character just started falling
@@ -106,6 +117,21 @@ public class PlayerMovement : MonoBehaviour {
         //Idle
         else
             player.setIntegerAnimator.Invoke("AnimState", 0);
+    }
+
+    private void ProgressStepCycle(float speed) {
+        if (rb.velocity.sqrMagnitude > 0 && mx != 0) {
+            m_StepCycle += (rb.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
+                         Time.fixedDeltaTime;
+        }
+
+        if (!(m_StepCycle > m_NextStep)) {
+            return;
+        }
+
+        m_NextStep = m_StepCycle + m_StepInterval;
+
+        player.playFootstepSound.Invoke();
     }
 
     private void CheckIfBelowGround()
@@ -134,6 +160,10 @@ public class PlayerMovement : MonoBehaviour {
         CheckWallHit();
         CheckGrounded();
         CheckIfBelowGround();
+
+        if (isGrounded) {
+            ProgressStepCycle(movementSpeed);
+        }
     }
 
     private void Knockback(Transform knockBackFrom)
@@ -210,6 +240,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Jump() {
         if (isGrounded || jumpCounter < extraJumps || isWallSliding) {
             player.playJumpAnimation.Invoke();
+            player.playJumpSound.Invoke();
             player.setBoolAnimator.Invoke("Grounded", isGrounded);
             m_groundSensor.Disable(0.2f);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);

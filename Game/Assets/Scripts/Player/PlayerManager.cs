@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour {
         yield return new WaitForSeconds(beforeRespawnPlayerTime);
 
         Reset();
+        player.playSpawnSound.Invoke();
         yield return new WaitForSeconds(disablePlayerAfterRespawnTime);
 
         Activate(true);
