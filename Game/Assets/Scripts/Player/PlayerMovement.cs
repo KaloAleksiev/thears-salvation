@@ -96,7 +96,8 @@ public class PlayerMovement : MonoBehaviour {
             isGrounded = true;
             jumpCounter = 0;
             player.setBoolAnimator.Invoke("Grounded", isGrounded);
-            player.playLandingSound.Invoke(m_StepCycle, m_NextStep);
+            player.playLandingSound.Invoke();
+            m_NextStep = m_StepCycle + .5f;
         }
 
         //Check if character just started falling
