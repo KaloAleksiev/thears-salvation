@@ -57,7 +57,7 @@ public class PlayerAudio : MonoBehaviour {
         m_JumpPitch = Random.Range(0.5f, 1.5f);
     }
 
-    private void PlayLandingSound(float m_StepCycle, float m_NextStep) {
+    private void PlayLandingSound() {
         int index = Random.Range(0, m_LandSounds.Length);
         m_AudioSource.clip = m_LandSounds[index];
         //m_AudioSource.pitch = m_LandPitch;
@@ -65,7 +65,6 @@ public class PlayerAudio : MonoBehaviour {
         m_AudioSource.Play();
 
         m_LandPitch = Random.Range(0.25f, 1.25f);
-        m_NextStep = m_StepCycle + .5f;
     }
 
     private void PlayFootStepAudio() {
