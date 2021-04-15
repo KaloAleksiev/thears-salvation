@@ -17,3 +17,11 @@ MonoBehaviour:
   damage: 35
   attackSpeedModifier: 1.3
   image: {fileID: 21300000, guid: 43c1b0c7efaf40945b862b6957e384c7, type: 3}
+  swingSounds:
+  - {fileID: 8300000, guid: ed781c6111bfc9f41b859d84a00dcb4f, type: 3}
+  - {fileID: 8300000, guid: d77d7ba2a9b61ab428af4bb7b29f45c3, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: d18030d0b9a60124f98c43a1493d4797, type: 3}
+  specialEffectSounds: []
+  pickUpSounds:
+  - {fileID: 8300000, guid: 7ce2744b8b9b1904abf3c86b6b0086fc, type: 3}

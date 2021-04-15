@@ -24,6 +24,7 @@ public class PlayerCollectibles : MonoBehaviour {
                 swordImage.sprite = pickUp.sword.Image;
                 pickUp.sword = oldSword;
                 pickUp.GetComponent<SpriteRenderer>().sprite = oldSword.Image;
+                player.playSwordPickUpSound.Invoke();
             }
         }
     }

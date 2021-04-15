@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour {
     private bool isKnockedBackRight;
 
     [Header("Footsteps sound")]
-    [SerializeField] private bool m_IsWalking;
     [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
     [SerializeField] private float m_StepInterval;
     private float m_NextStep;
@@ -122,7 +121,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void ProgressStepCycle(float speed) {
         if (rb.velocity.sqrMagnitude > 0 && mx != 0) {
-            m_StepCycle += (rb.velocity.magnitude + (speed * (m_IsWalking ? 1f : m_RunstepLenghten))) *
+            m_StepCycle += (rb.velocity.magnitude + (speed * m_RunstepLenghten)) *
                          Time.fixedDeltaTime;
         }
 

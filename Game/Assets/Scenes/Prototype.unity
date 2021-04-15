@@ -4418,6 +4418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PLAYER 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1938901595410186531, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: m_RunstepLenghten
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1945359459898416547, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
       propertyPath: m_RootOrder

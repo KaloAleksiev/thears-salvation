@@ -38,13 +38,19 @@ public class Player : MonoBehaviour {
     public SetFloatAnimatorEvent setFloatAnimator;
     public SetBoolAnimatorEvent setBoolAnimator;
 
-    //sound events
+    //base sound events
+    public UnityEvent playFootstepSound;
     public UnityEvent playJumpSound;
     public UnityEvent playLandingSound;
-    public UnityEvent playFootstepSound;
     public UnityEvent playPainSound;
     public UnityEvent playDeathSound;
     public UnityEvent playSpawnSound;
+
+    //sword sound events
+    public UnityEvent playSwordSwingSound;
+    public UnityEvent playSwordHitSound;
+    public UnityEvent playSpecialEffectSound;
+    public UnityEvent playSwordPickUpSound;
 }
 
 [System.Serializable] public class KnockBackEvent : UnityEvent<Transform> { }

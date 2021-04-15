@@ -42,9 +42,17 @@ public class PlayerCombat : MonoBehaviour
 
                 if (enemyHealth) 
                 {
+                    player.playSwordHitSound.Invoke();
                     DealDamage(enemyHealth);
                 }
+                else
+                {
+                    player.playSwordSwingSound.Invoke();
+                }
             }
+        } else
+        {
+            player.playSwordSwingSound.Invoke();
         }
     }
 
@@ -97,6 +105,7 @@ public class PlayerCombat : MonoBehaviour
             if (enemyHealth.health.currentHealth > 0)
             {
                 enemyHealth.GetDamaged(10 * player.playerData.DamageMultiplier);
+                player.playSpecialEffectSound.Invoke();
             }
         }
     }
@@ -106,6 +115,7 @@ public class PlayerCombat : MonoBehaviour
         float originalSpeed = enemyHealth.enemy.enemyAI.speed;
         float slowedSpeed = enemyHealth.enemy.enemyAI.speed * player.playerData.SlowModifier;
         enemyHealth.enemy.enemyAI.speed = slowedSpeed;
+        //player.playSpecialEffectSound.Invoke();
         yield return new WaitForSeconds(3);
         enemyHealth.enemy.enemyAI.speed = originalSpeed;
     }

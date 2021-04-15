@@ -15,8 +15,6 @@ public class OptionsMenu : MonoBehaviour {
 
     public void SetMasterVolume(float volume) {
         masterVolume.SetFloat("MasterVolume", volume);
-        masterVolume.SetFloat("MusicVolume", volume);
-        masterVolume.SetFloat("SoundsVolume", volume);
     }
 
     public void SetMusicVolume(float volume) {

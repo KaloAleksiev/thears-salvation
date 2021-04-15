@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: Basic Sword
   m_EditorClassIdentifier: 
   name: Basic Sword
+  element: {fileID: 0}
   damage: 30
   attackSpeedModifier: 1
   image: {fileID: 21300000, guid: 57cebebf24c58fa4bbe2f9f7694d874a, type: 3}
+  swingSounds:
+  - {fileID: 8300000, guid: bdb286866d79947418f96fd0cc6f603f, type: 3}
+  - {fileID: 8300000, guid: 8f94523116263cc489a4496c3ea50918, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 9f2018a8ecf127e48831abf84d471c36, type: 3}
+  - {fileID: 8300000, guid: b12c4e2d2ca27b342839dff826583830, type: 3}
+  specialEffectSounds: []
+  pickUpSounds:
+  - {fileID: 8300000, guid: 7ce2744b8b9b1904abf3c86b6b0086fc, type: 3}
