@@ -14,6 +14,18 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &-3171128262738409285
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Music
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: ccc7c718e3faa3441b55b910044a0400
+  m_FloatValues:
+    d7434b01e0109cd46903481cfe02fb17: 0
+  m_TransitionOverrides: {}
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -31,7 +43,11 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: d7434b01e0109cd46903481cfe02fb17
-    name: Volume
+    name: MasterVolume
+  - guid: f6aa0255a704a534f9540c7235824621
+    name: MusicVolume
+  - guid: 5cebebb482cf4624d84cfa729fd208b5
+    name: SoundsVolume
   m_AudioMixerGroupViews:
   - guids:
     - 98639b3d044aaa940b4ba9803e163739
@@ -81,9 +97,21 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: Master
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: fb7b3f312b82e804b93ce8711f3e5514
+  m_FloatValues:
+    d7434b01e0109cd46903481cfe02fb17: 0
+  m_TransitionOverrides: {}
+--- !u!245 &2416600877465057500
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sounds
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: decf7c5e1b243b044afcbd9536bd511d
   m_FloatValues:
     d7434b01e0109cd46903481cfe02fb17: 0
   m_TransitionOverrides: {}
