@@ -51,7 +51,8 @@ public class PlayerCombat : MonoBehaviour
     public void DealDamage(EnemyHealth enemyHealth)
     {
         Element enemyElement = enemyHealth.element;
-        if (enemyElement)
+        Element playerElement = player.playerData.ActiveSword.Element;
+        if (enemyElement && playerElement)
         {
             if (enemyElement == player.playerData.ActiveSword.Element.WeakerElement)
             {
