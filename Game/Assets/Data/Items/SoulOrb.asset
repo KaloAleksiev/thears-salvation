@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a639dd51324ff43b6159645d068985, type: 3}
+  m_Name: SoulOrb
+  m_EditorClassIdentifier: 
+  name: Soul Orb
+  image: {fileID: 3462580830325108697, guid: 30a4ffe4f58bc8047a99b1d08c15fb70, type: 3}
+  worth: 1
+  pickupSound: {fileID: 8300000, guid: f9734f8b9a54af34fad53fd8ee31a006, type: 3}
+  ambientSound: {fileID: 8300000, guid: 83539f0e4cdc1dc4698213307cc77149, type: 3}

@@ -15,4 +15,19 @@ MonoBehaviour:
   name: Earth Elemental
   health: 250
   damage: 50
+  footstepSounds:
+  - {fileID: 8300000, guid: bc31718bd7039a14ba659d7a95918984, type: 3}
+  - {fileID: 8300000, guid: 9d3f0d22045bde74a8a41b8d8b91d907, type: 3}
+  painSounds:
+  - {fileID: 8300000, guid: 97e37f455344cfe42acf88a25001558b, type: 3}
+  - {fileID: 8300000, guid: 9fb9a21a135ca6548bcd96db1c6843f6, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 4a22d0318f722c34798545753146b91b, type: 3}
+  - {fileID: 8300000, guid: 68b34d442c2a6294c8dec64170fd3b6f, type: 3}
+  swingSounds:
+  - {fileID: 8300000, guid: 77ccdac9c3eabba44ae26da050ca7547, type: 3}
+  - {fileID: 8300000, guid: f1fb89ba98ea99047afe8aaf6a47c656, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 77ccdac9c3eabba44ae26da050ca7547, type: 3}
+  - {fileID: 8300000, guid: f1fb89ba98ea99047afe8aaf6a47c656, type: 3}
   element: {fileID: 11400000, guid: f1301c8d3f0d6b4448c50d5bf8ccde2a, type: 2}

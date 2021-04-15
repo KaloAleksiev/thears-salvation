@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public Enemy enemy;
     public Transform target;
-    public float speed = 200f;
+    public float speed;
     public float nextWaypointDistance = 3f;
     public Animator animator;
     public LayerMask groundLayers;
@@ -39,12 +39,20 @@ public class EnemyAI : MonoBehaviour
 
     Vector2 direction;
 
+    [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
+    [SerializeField] private float m_StepInterval;
+    private float m_NextStep;
+    private float m_StepCycle;
+
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
+
+        m_StepCycle = 0f;
+        m_NextStep = m_StepCycle / 2f;
     }
 
     void UpdatePath()
@@ -62,6 +70,23 @@ public class EnemyAI : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
+    }
+
+    private void ProgressStepCycle(float speed)
+    {
+        if (rb.velocity.sqrMagnitude > 0)
+        {
+            m_StepCycle += (rb.velocity.magnitude + (speed * m_RunstepLenghten)) * Time.fixedDeltaTime;
+        }
+
+        if (!(m_StepCycle > m_NextStep))
+        {
+            return;
+        }
+
+        m_NextStep = m_StepCycle + m_StepInterval;
+
+        enemy.playFootstepSound.Invoke();
     }
 
     private void Flip()
@@ -91,12 +116,16 @@ public class EnemyAI : MonoBehaviour
                 foreach (Collider2D hitEnemy in hitEnemies)
                 {
                     PlayerHealth playerHealth = hitEnemy.GetComponent<PlayerHealth>();
-
                     if (playerHealth)
                     {
+                        enemy.playHitSound.Invoke();
                         playerHealth.Damage(enemy.enemyData.Damage);
                     }
                 }
+            }
+            else
+            {
+                enemy.playSwingSound.Invoke();
             }
         }
         animator.SetBool("IsAttacking", false);
@@ -172,12 +201,14 @@ public class EnemyAI : MonoBehaviour
                             enemyTransform.localScale = new Vector3(-size, size, 1f);
                             isFacingRight = true;
                             animator.SetInteger("AnimState", 2);
+                            ProgressStepCycle(speed / 100);
                         }
                         else if (rb.velocity.x < -0.4f)
                         {
                             enemyTransform.localScale = new Vector3(size, size, 1f);
                             isFacingRight = false;
                             animator.SetInteger("AnimState", 2);
+                            ProgressStepCycle(speed / 100);
                         }
                         else if (rb.velocity.x > -0.4f && rb.velocity.x < 0.4f)
                         {

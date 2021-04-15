@@ -19,9 +19,11 @@ public class PlayerCollectibles : MonoBehaviour {
             PickUp pickUp = swordCollider.GetComponent<PickUp>();
             if (pickUp)
             {
+                Sword oldSword = player.playerData.ActiveSword;
                 player.playerData.ActiveSword = pickUp.sword;
                 swordImage.sprite = pickUp.sword.Image;
-                Destroy(swordCollider.gameObject);
+                pickUp.sword = oldSword;
+                pickUp.GetComponent<SpriteRenderer>().sprite = oldSword.Image;
             }
         }
     }
@@ -30,8 +32,9 @@ public class PlayerCollectibles : MonoBehaviour {
         Collectible collectible = collider.GetComponent<Collectible>();
 
         if (collectible) {
-            player.addSoulOrbs.Invoke(collectible.worth);
+            player.addSoulOrbs.Invoke(collectible.soulOrb.Worth);
             Destroy(collider.gameObject);
+            AudioSource.PlayClipAtPoint(collectible.soulOrb.PickupSound, transform.position);
         }
 
         PickUp pickUp = collider.GetComponent<PickUp>();

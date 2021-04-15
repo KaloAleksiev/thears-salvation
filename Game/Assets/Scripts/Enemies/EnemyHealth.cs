@@ -13,10 +13,12 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (health.currentHealth > 0)
         {
+            enemy.playPainSound.Invoke();
             health.TakeDamage(damage);
 
             if (health.currentHealth == 0)
             {
+                enemy.playDeathSound.Invoke();
                 Die();
             }
         }
@@ -48,6 +50,8 @@ public class EnemyHealth : MonoBehaviour {
             GameObject item = items[0];
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             Instantiate(item, spawnPoint, Quaternion.identity);
+            Collectible collectible = item.GetComponent<Collectible>();
+            collectible.PlaySound(collectible.soulOrb.AmbientSound);
         }
     }
 }

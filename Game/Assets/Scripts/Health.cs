@@ -16,6 +16,7 @@ public class Health : MonoBehaviour {
     }
 
     public void TakeDamage(double damage) {
+
         animator.SetTrigger("Hurt");
         currentHealth -= damage;
         if (currentHealth < 0) currentHealth = 0;

@@ -15,4 +15,19 @@ MonoBehaviour:
   name: Fire Elemental
   health: 250
   damage: 50
+  footstepSounds:
+  - {fileID: 8300000, guid: bc31718bd7039a14ba659d7a95918984, type: 3}
+  - {fileID: 8300000, guid: 9d3f0d22045bde74a8a41b8d8b91d907, type: 3}
+  painSounds:
+  - {fileID: 8300000, guid: 97e37f455344cfe42acf88a25001558b, type: 3}
+  - {fileID: 8300000, guid: 9fb9a21a135ca6548bcd96db1c6843f6, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 243ed9926c5ea2c4a99ae5b07beae653, type: 3}
+  - {fileID: 8300000, guid: eeab9def0ece04f48916cb963f24bdd5, type: 3}
+  swingSounds:
+  - {fileID: 8300000, guid: 77ccdac9c3eabba44ae26da050ca7547, type: 3}
+  - {fileID: 8300000, guid: f1fb89ba98ea99047afe8aaf6a47c656, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 77ccdac9c3eabba44ae26da050ca7547, type: 3}
+  - {fileID: 8300000, guid: f1fb89ba98ea99047afe8aaf6a47c656, type: 3}
   element: {fileID: 11400000, guid: 551188f8a486079449c04a99c8226f39, type: 2}

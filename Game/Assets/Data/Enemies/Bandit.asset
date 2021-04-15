@@ -15,3 +15,21 @@ MonoBehaviour:
   name: Bandit
   health: 100
   damage: 25
+  footstepSounds:
+  - {fileID: 8300000, guid: 9ea01f73949b67c49ab026104f45a34a, type: 3}
+  - {fileID: 8300000, guid: 55fa9662dc351b84e99325d261fec5c4, type: 3}
+  - {fileID: 8300000, guid: 62749b52b8720304ebb53162d72b6058, type: 3}
+  - {fileID: 8300000, guid: fc867e10b3f020b4ab382b086d906d51, type: 3}
+  - {fileID: 8300000, guid: 174725902ad0d594fa93531aaaa0220c, type: 3}
+  - {fileID: 8300000, guid: f3999f0ceae5bbd428bf10054879d53d, type: 3}
+  painSounds:
+  - {fileID: 8300000, guid: 2bbbe059b656aec4899509ef71b2872e, type: 3}
+  - {fileID: 8300000, guid: edeba6c6604de2c4e8ad9eb2af19ce19, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 88fbd87d1bbc6ce44a2e31cdef9fec13, type: 3}
+  - {fileID: 8300000, guid: 400c71032aea2b5498d5af58879541f5, type: 3}
+  swingSounds:
+  - {fileID: 8300000, guid: eb2f5e2ba1f1f33499985529a1f6e57b, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 1c88b1c4ceebb9e4496b3a2c35854192, type: 3}
+  - {fileID: 8300000, guid: ea28fa06143156549bf0665f2f09699d, type: 3}

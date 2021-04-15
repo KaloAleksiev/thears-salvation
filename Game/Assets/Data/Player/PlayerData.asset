@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1946be5a6acd88d4086cf42117e28dba, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
-  damageMultiplier: 1
-  soulOrbs: 0
-  defenseMultiplier: 1
-  activeSword: {fileID: 11400000, guid: 99013a66e36ff4a49a31e59a8c19a903, type: 2}
+  currentHealth: 200
+  maxHealth: 200
+  damageMultiplier: 1.2000000000000002
+  soulOrbs: 1
+  defenseMultiplier: 0.6000000000000001
+  activeSword: {fileID: 11400000, guid: 075cb7e93f6be6d43a4d4351f53cc496, type: 2}
   burnTicks: 3
   slowModifier: 0.7

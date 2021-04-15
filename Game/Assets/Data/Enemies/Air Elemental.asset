@@ -15,4 +15,19 @@ MonoBehaviour:
   name: Air Elemental
   health: 250
   damage: 50
+  footstepSounds:
+  - {fileID: 8300000, guid: bc31718bd7039a14ba659d7a95918984, type: 3}
+  - {fileID: 8300000, guid: 9d3f0d22045bde74a8a41b8d8b91d907, type: 3}
+  painSounds:
+  - {fileID: 8300000, guid: 97e37f455344cfe42acf88a25001558b, type: 3}
+  - {fileID: 8300000, guid: 9fb9a21a135ca6548bcd96db1c6843f6, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: e3284fbc61d752248a01e8873b281519, type: 3}
+  - {fileID: 8300000, guid: 73a34eca622fd4f40919226cf46082c6, type: 3}
+  swingSounds:
+  - {fileID: 8300000, guid: e131bb90b7ea0fe4fa1b1730e24ac9eb, type: 3}
+  - {fileID: 8300000, guid: 28d710e653e744a4ab05fcbf8d2a4f61, type: 3}
+  hitSounds:
+  - {fileID: 8300000, guid: 77ccdac9c3eabba44ae26da050ca7547, type: 3}
+  - {fileID: 8300000, guid: f1fb89ba98ea99047afe8aaf6a47c656, type: 3}
   element: {fileID: 11400000, guid: fc429567c148bc74c80ff3deff84aeaa, type: 2}
