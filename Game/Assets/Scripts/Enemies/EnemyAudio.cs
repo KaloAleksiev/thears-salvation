@@ -5,13 +5,23 @@ using UnityEngine;
 public class EnemyAudio : MonoBehaviour
 {
     public Enemy enemy;
-    private AudioSource audioSource;
+    private AudioSource asFootsteps;
+    private AudioSource asPain;
+    private AudioSource asDeath;
+    private AudioSource asSwing;
+    private AudioSource asHit;
+    private AudioSource[] audioSources;
     private float walkPitch;
 
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSources = GetComponents<AudioSource>();
+        asFootsteps = audioSources[0];
+        asPain = audioSources[1];
+        asDeath = audioSources[2];
+        asSwing = audioSources[3];
+        asHit = audioSources[4];
         walkPitch = Random.Range(0.5f, 1.5f);
 
         enemy.playFootstepSound.AddListener(PlayFootstepSound);
@@ -35,40 +45,40 @@ public class EnemyAudio : MonoBehaviour
         // pick & play a random footstep sound from the array,
         // excluding sound at index 0
         int index = Random.Range(1, enemy.enemyData.FootstepSounds.Length);
-        audioSource.clip = enemy.enemyData.FootstepSounds[index];
-        audioSource.PlayOneShot(audioSource.clip);
+        asFootsteps.clip = enemy.enemyData.FootstepSounds[index];
+        asFootsteps.PlayOneShot(asFootsteps.clip);
 
         walkPitch = Random.Range(0.5f, 1.5f);
         // move picked sound to index 0 so it's not picked next time
         enemy.enemyData.FootstepSounds[index] = enemy.enemyData.FootstepSounds[0];
-        enemy.enemyData.FootstepSounds[0] = audioSource.clip;
+        enemy.enemyData.FootstepSounds[0] = asFootsteps.clip;
     }
 
     private void PlayPainSound()
     {
         int index = Random.Range(0, enemy.enemyData.PainSounds.Length);
-        audioSource.clip = enemy.enemyData.PainSounds[index];
-        audioSource.Play();
+        asPain.clip = enemy.enemyData.PainSounds[index];
+        asPain.Play();
     }
 
     private void PlayDeathSound()
     {
         int index = Random.Range(0, enemy.enemyData.DeathSounds.Length);
-        audioSource.clip = enemy.enemyData.DeathSounds[index];
-        audioSource.Play();
+        asDeath.clip = enemy.enemyData.DeathSounds[index];
+        asDeath.Play();
     }
 
     private void PlaySwingSound()
     {
         int index = Random.Range(0, enemy.enemyData.SwingSounds.Length);
-        audioSource.clip = enemy.enemyData.SwingSounds[index];
-        audioSource.Play();
+        asSwing.clip = enemy.enemyData.SwingSounds[index];
+        asSwing.Play();
     }
 
     private void PlayHitSound()
     {
         int index = Random.Range(0, enemy.enemyData.HitSounds.Length);
-        audioSource.clip = enemy.enemyData.HitSounds[index];
-        audioSource.Play();
+        asHit.clip = enemy.enemyData.HitSounds[index];
+        asHit.Play();
     }
 }
