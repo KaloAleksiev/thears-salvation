@@ -17,16 +17,16 @@ MonoBehaviour:
   damageMultiplier: 1
   soulOrbs: 0
   defenseMultiplier: 1
-  activeSword: {fileID: 11400000, guid: 075cb7e93f6be6d43a4d4351f53cc496, type: 2}
+  activeSword: {fileID: 11400000, guid: 99013a66e36ff4a49a31e59a8c19a903, type: 2}
   burnTicks: 3
   slowModifier: 0.7
   footstepSounds:
   - {fileID: 8300000, guid: 55fa9662dc351b84e99325d261fec5c4, type: 3}
-  - {fileID: 8300000, guid: 9ea01f73949b67c49ab026104f45a34a, type: 3}
-  - {fileID: 8300000, guid: f3999f0ceae5bbd428bf10054879d53d, type: 3}
   - {fileID: 8300000, guid: fc867e10b3f020b4ab382b086d906d51, type: 3}
+  - {fileID: 8300000, guid: f3999f0ceae5bbd428bf10054879d53d, type: 3}
   - {fileID: 8300000, guid: 62749b52b8720304ebb53162d72b6058, type: 3}
   - {fileID: 8300000, guid: 174725902ad0d594fa93531aaaa0220c, type: 3}
+  - {fileID: 8300000, guid: 9ea01f73949b67c49ab026104f45a34a, type: 3}
   jumpSounds:
   - {fileID: 8300000, guid: b389bd365ba97b445844f9948211ee1c, type: 3}
   - {fileID: 8300000, guid: b7bdcf32084f25e4593b0a0859e04dfe, type: 3}

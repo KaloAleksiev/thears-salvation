@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class InGameMenus : MonoBehaviour {
     public static bool GameIsPaused = false;
@@ -7,24 +8,32 @@ public class InGameMenus : MonoBehaviour {
     public HUDManager hud;
     public GameObject pauseMenuUI;
     public GameObject upgradesMenuUI;
+    public AudioSource music;
 
     private GameObject currentMenu;
+    private AudioSource audioSource;
+
+    void Start() {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (GameIsPaused) {
-                ResumeGame();
-            } else {
-                SetCurrentMenu(pauseMenuUI);
-                PauseGame();
-            }
+            CheckGamePausedAndSetMenu(pauseMenuUI);
         } else if (Input.GetKeyDown(KeyCode.E)) {
-            if (GameIsPaused) {
-                ResumeGame();
-            } else {
-                SetCurrentMenu(upgradesMenuUI);
-                PauseGame();
-            }
+            CheckGamePausedAndSetMenu(upgradesMenuUI);
+        }
+    }
+
+    private void CheckGamePausedAndSetMenu(GameObject menu) {
+        if (GameIsPaused) {
+            ResumeGame();
+            music.UnPause();
+        } else {
+            audioSource.Play();
+            music.Pause();
+            SetCurrentMenu(menu);
+            PauseGame();
         }
     }
 
