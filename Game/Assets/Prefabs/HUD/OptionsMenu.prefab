@@ -755,8 +755,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca003ab304789de4393bbd7f8b49038d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: 63b2f6566b3194b4b8b83548ba081935, type: 2}
   masterVolume: {fileID: 24100000, guid: a9625ef0e14ea9b43a3d6519f026e8b2, type: 2}
   resolutionDropdown: {fileID: 2253353572275323597}
+  fullScreenToggle: {fileID: 2253353573299473209}
+  fullScreenOnButton: {fileID: 6179434626793802111}
+  fullScreenOffButton: {fileID: 4181202128965495456}
+  masterVolumeSlider: {fileID: 2253353573535693003}
+  musicVolumeSlider: {fileID: 8389112202031471748}
+  soundsVolumeSlider: {fileID: 619867607243291507}
 --- !u!1 &2253353572642299760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,7 +3982,7 @@ PrefabInstance:
     - target: {fileID: 6988912158262566452, guid: ea979916535f6cc449f056e5cd2c3ca5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6988912158262566453, guid: ea979916535f6cc449f056e5cd2c3ca5,
         type: 3}
