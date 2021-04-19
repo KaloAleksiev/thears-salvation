@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 7335781124442790166}
   - component: {fileID: 7335781124442790167}
   - component: {fileID: 494892393193749152}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,6 +301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e251f391b97f342bf249a370831bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
+  dealDamage: 1
+  makeInvincible: 1
 --- !u!96 &494892393193749152
 TrailRenderer:
   serializedVersion: 2

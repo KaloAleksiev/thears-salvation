@@ -29,6 +29,11 @@ public class EnemyHealth : MonoBehaviour {
         animator.SetTrigger("Death");
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         GetComponent<Collider2D>().enabled = false;
+        // disable colliders in children
+        Collider2D[] childrenColliders = GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D collider in childrenColliders) {
+            collider.enabled = false;
+        }
         health.sliderChange.Invoke(false);
         StartCoroutine(EnableEnemy(false));
         //Destroy(gameObject);
