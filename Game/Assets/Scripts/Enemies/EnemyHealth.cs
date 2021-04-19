@@ -13,13 +13,15 @@ public class EnemyHealth : MonoBehaviour {
     {
         if (health.currentHealth > 0)
         {
-            enemy.playPainSound.Invoke();
             health.TakeDamage(damage);
 
             if (health.currentHealth == 0)
             {
                 enemy.playDeathSound.Invoke();
                 Die();
+            } else
+            {
+                enemy.playPainSound.Invoke();
             }
         }
     }
