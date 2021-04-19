@@ -411,10 +411,10 @@ AudioSource:
   m_GameObject: {fileID: 2253876324637714526}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4490809840972938513, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
+  OutputAudioMixerGroup: {fileID: 6734864027761950049, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -508,10 +508,10 @@ AudioSource:
   m_GameObject: {fileID: 2253876324637714526}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4490809840972938513, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
+  OutputAudioMixerGroup: {fileID: 6734864027761950049, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -605,10 +605,10 @@ AudioSource:
   m_GameObject: {fileID: 2253876324637714526}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4490809840972938513, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
+  OutputAudioMixerGroup: {fileID: 6734864027761950049, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -702,10 +702,10 @@ AudioSource:
   m_GameObject: {fileID: 2253876324637714526}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4490809840972938513, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
+  OutputAudioMixerGroup: {fileID: 6734864027761950049, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -799,10 +799,10 @@ AudioSource:
   m_GameObject: {fileID: 2253876324637714526}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4490809840972938513, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
+  OutputAudioMixerGroup: {fileID: 6734864027761950049, guid: a9625ef0e14ea9b43a3d6519f026e8b2,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

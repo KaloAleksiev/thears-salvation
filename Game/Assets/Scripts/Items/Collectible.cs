@@ -11,7 +11,6 @@ public class Collectible : MonoBehaviour {
 
     public void PlaySound(AudioClip sound)
     {
-        audioSource = GetComponent<AudioSource>();
         audioSource.clip = sound;
         audioSource.Play();
     }

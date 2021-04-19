@@ -50,8 +50,6 @@ public class EnemyHealth : MonoBehaviour {
             GameObject item = items[0];
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             Instantiate(item, spawnPoint, Quaternion.identity);
-            Collectible collectible = item.GetComponent<Collectible>();
-            collectible.PlaySound(collectible.soulOrb.AmbientSound);
         }
     }
 }

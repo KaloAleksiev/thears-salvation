@@ -15,5 +15,5 @@ MonoBehaviour:
   name: Soul Orb
   image: {fileID: 3462580830325108697, guid: 30a4ffe4f58bc8047a99b1d08c15fb70, type: 3}
   worth: 1
-  pickupSound: {fileID: 8300000, guid: f9734f8b9a54af34fad53fd8ee31a006, type: 3}
+  pickupSound: {fileID: 8300000, guid: eccbcc3888943b345a1b9386ecf1faf0, type: 3}
   ambientSound: {fileID: 8300000, guid: 83539f0e4cdc1dc4698213307cc77149, type: 3}
