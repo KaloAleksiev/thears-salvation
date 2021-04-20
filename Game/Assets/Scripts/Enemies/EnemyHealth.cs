@@ -9,6 +9,18 @@ public class EnemyHealth : MonoBehaviour {
     public GameObject[] items;
     public float disableTime = 2;
 
+    [SerializeField] private Canvas enemyCanvas;
+
+    private void Start() {
+        enemy.flipCanvasRight.AddListener(FlipCanvasRight);
+        enemy.flipCanvasRight.AddListener(FlipCanvasLeft);
+    }
+
+    private void OnDestroy() {
+        enemy.flipCanvasRight.RemoveListener(FlipCanvasRight);
+        enemy.flipCanvasRight.RemoveListener(FlipCanvasLeft);
+    }
+
     public void GetDamaged(double damage)
     {
         if (health.currentHealth > 0)
@@ -58,5 +70,15 @@ public class EnemyHealth : MonoBehaviour {
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             Instantiate(item, spawnPoint, Quaternion.identity);
         }
+    }
+
+    private void FlipCanvasRight() {
+        Vector3 enemyCanvasScale = enemyCanvas.transform.localScale;
+        enemyCanvas.transform.localScale = new Vector3(-enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
+    }
+
+    private void FlipCanvasLeft() {
+        Vector3 enemyCanvasScale = enemyCanvas.transform.localScale;
+        enemyCanvas.transform.localScale = new Vector3(enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
     }
 }

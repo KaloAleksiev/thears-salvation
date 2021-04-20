@@ -58,6 +58,8 @@ public class PlayerMovement : MonoBehaviour {
     private float m_NextStep;
     private float m_StepCycle;
 
+    private Vector3 receivedDamageText;
+
     private void Start()
     {
         movementSpeed = defaultMovementSpeed;
@@ -67,6 +69,8 @@ public class PlayerMovement : MonoBehaviour {
 
         m_StepCycle = 0f;
         m_NextStep = m_StepCycle / 2f;
+
+        receivedDamageText = player.health.receivedDamageText.transform.localScale;
     }
 
     private void OnDestroy()
@@ -187,11 +191,13 @@ public class PlayerMovement : MonoBehaviour {
     public void RotateLeft() {
         isFacingRight = false;
         transform.localScale = new Vector3(2f, 2f, 1f);
+        player.health.receivedDamageText.transform.localScale = new Vector3(-receivedDamageText.x, receivedDamageText.y, receivedDamageText.z);
     }
 
     public void RotateRight() {
         isFacingRight = true;
         transform.localScale = new Vector3(-2f, 2f, 1f);
+        player.health.receivedDamageText.transform.localScale = new Vector3(receivedDamageText.x, receivedDamageText.y, receivedDamageText.z);
     }
 
     private void CheckWallHit() {

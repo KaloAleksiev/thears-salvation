@@ -7,8 +7,8 @@ public class Sword : ScriptableObject
 {
     [SerializeField] private new string name;
     [SerializeField] private Element element;
-    [SerializeField] private float damage;
-    [SerializeField] private float attackSpeedModifier;
+    [SerializeField] private double damage;
+    [SerializeField] private double attackSpeedModifier;
     [SerializeField] private Sprite image;
     [SerializeField] private AudioClip[] swingSounds;
     [SerializeField] private AudioClip[] hitSounds;
@@ -17,8 +17,8 @@ public class Sword : ScriptableObject
 
     public string Name { get => name; set => name = value; }
     public Element Element { get => element; set => element = value; }
-    public float Damage { get => damage; set => damage = value; }
-    public float AttackSpeedModifier { get => attackSpeedModifier; set => attackSpeedModifier = value; }
+    public double Damage { get => damage; set => damage = value; }
+    public double AttackSpeedModifier { get => attackSpeedModifier; set => attackSpeedModifier = value; }
     public Sprite Image { get => image; set => image = value; }
     public AudioClip[] SwingSounds { get => swingSounds; set => swingSounds = value; }
     public AudioClip[] HitSounds { get => hitSounds; set => hitSounds = value; }

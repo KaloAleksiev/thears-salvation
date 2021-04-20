@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     public EnemyAI enemyAI;
     public EnemyData enemyData;
 
+    public UnityEvent flipCanvasRight;
+    public UnityEvent flipCanvasLeft;
+
     public UnityEvent playFootstepSound;
     public UnityEvent playPainSound;
     public UnityEvent playDeathSound;

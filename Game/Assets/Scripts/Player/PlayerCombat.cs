@@ -20,7 +20,7 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Attack();
-                nextAttackTime = Time.time + 1f / (attackRate * player.playerData.ActiveSword.AttackSpeedModifier);
+                nextAttackTime = Time.time + 1f / (float)(attackRate * player.playerData.ActiveSword.AttackSpeedModifier);
             }
         }
     }
@@ -112,8 +112,8 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ReduceSpeed(EnemyHealth enemyHealth)
     {
-        float originalSpeed = enemyHealth.enemy.enemyAI.speed;
-        float slowedSpeed = enemyHealth.enemy.enemyAI.speed * player.playerData.SlowModifier;
+        double originalSpeed = enemyHealth.enemy.enemyAI.speed;
+        double slowedSpeed = enemyHealth.enemy.enemyAI.speed * player.playerData.SlowModifier;
         enemyHealth.enemy.enemyAI.speed = slowedSpeed;
         //player.playSpecialEffectSound.Invoke();
         yield return new WaitForSeconds(3);

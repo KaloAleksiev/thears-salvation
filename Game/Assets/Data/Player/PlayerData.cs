@@ -9,7 +9,7 @@ public class PlayerData : ScriptableObject {
     [SerializeField] private double defenseMultiplier;
     [SerializeField] private Sword activeSword;
     [SerializeField] private int burnTicks = 3;
-    [SerializeField] private float slowModifier = 0.5f;
+    [SerializeField] private double slowModifier = 0.5;
     [SerializeField] private AudioClip[] footstepSounds;
     [SerializeField] private AudioClip[] jumpSounds;
     [SerializeField] private AudioClip[] landSounds;
@@ -24,7 +24,7 @@ public class PlayerData : ScriptableObject {
     public double DefenseMultiplier { get => defenseMultiplier; set => defenseMultiplier = value; }
     public Sword ActiveSword { get => activeSword; set => activeSword = value; }
     public int BurnTicks { get => burnTicks; set => burnTicks = value; }
-    public float SlowModifier { get => slowModifier; set => slowModifier = value; }
+    public double SlowModifier { get => slowModifier; set => slowModifier = value; }
     public AudioClip[] FootstepSounds { get => footstepSounds; set => footstepSounds = value; }
     public AudioClip[] JumpSounds { get => jumpSounds; set => jumpSounds = value; }
     public AudioClip[] LandSounds { get => landSounds; set => landSounds = value; }

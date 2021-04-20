@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     public Enemy enemy;
     public Transform target;
-    public float speed;
+    public double speed;
     public float nextWaypointDistance = 3f;
     public Animator animator;
     public LayerMask groundLayers;
@@ -163,7 +163,7 @@ public class EnemyAI : MonoBehaviour
                 }
 
                 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-                Vector2 force = direction * speed * Time.deltaTime;
+                Vector2 force = direction * (float)speed * Time.deltaTime;
 
                 float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -201,14 +201,14 @@ public class EnemyAI : MonoBehaviour
                             enemyTransform.localScale = new Vector3(-size, size, 1f);
                             isFacingRight = true;
                             animator.SetInteger("AnimState", 2);
-                            ProgressStepCycle(speed / 100);
+                            ProgressStepCycle((float)speed / 100);
                         }
                         else if (rb.velocity.x < -0.4f)
                         {
                             enemyTransform.localScale = new Vector3(size, size, 1f);
                             isFacingRight = false;
                             animator.SetInteger("AnimState", 2);
-                            ProgressStepCycle(speed / 100);
+                            ProgressStepCycle((float)speed / 100);
                         }
                         else if (rb.velocity.x > -0.4f && rb.velocity.x < 0.4f)
                         {
