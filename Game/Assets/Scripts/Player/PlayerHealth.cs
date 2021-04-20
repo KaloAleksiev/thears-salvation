@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         SetMaxHealth();
-        ResetPlayerHealth();
 
         player.drainHealth.AddListener(DrainHealth);
         player.enablePlayerCollider.AddListener(EnablePlayerCollider);

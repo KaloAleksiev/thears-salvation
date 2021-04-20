@@ -9,18 +9,8 @@ public class EnemyHealth : MonoBehaviour {
     public GameObject[] items;
     public float disableTime = 2;
 
-    [SerializeField] private Canvas enemyCanvas;
-    Vector3 enemyCanvasScale;
-
     private void Start() {
-        enemy.flipCanvasRight.AddListener(FlipCanvasRight);
-        enemy.flipCanvasLeft.AddListener(FlipCanvasLeft);
-        enemyCanvasScale = enemyCanvas.transform.localScale;
-    }
-
-    private void OnDestroy() {
-        enemy.flipCanvasRight.RemoveListener(FlipCanvasRight);
-        enemy.flipCanvasLeft.RemoveListener(FlipCanvasLeft);
+        SetMaxHealth();
     }
 
     public void GetDamaged(double damage)
@@ -28,7 +18,6 @@ public class EnemyHealth : MonoBehaviour {
         if (health.currentHealth > 0)
         {
             health.TakeDamage(damage);
-            health.receivedDamageAnimator.SetTrigger("Enemy");
 
             if (health.currentHealth == 0)
             {
@@ -39,6 +28,10 @@ public class EnemyHealth : MonoBehaviour {
                 enemy.playPainSound.Invoke();
             }
         }
+    }
+
+    private void SetMaxHealth() {
+        health.maxHealth = enemy.enemyData.Health;
     }
 
     private void Die() {
@@ -73,13 +66,5 @@ public class EnemyHealth : MonoBehaviour {
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
             Instantiate(item, spawnPoint, Quaternion.identity);
         }
-    }
-
-    private void FlipCanvasRight() {
-        enemyCanvas.transform.localScale = new Vector3(enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
-    }
-
-    private void FlipCanvasLeft() {
-        enemyCanvas.transform.localScale = new Vector3(-enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
     }
 }

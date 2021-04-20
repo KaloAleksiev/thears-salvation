@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1946be5a6acd88d4086cf42117e28dba, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  currentHealth: 100
-  maxHealth: 100
+  currentHealth: 0
+  maxHealth: 125
   damageMultiplier: 1
-  soulOrbs: 0
+  soulOrbs: 3
   defenseMultiplier: 1
   activeSword: {fileID: 11400000, guid: 02ee3efa4e198064c8cac4d4d08e0b44, type: 2}
   burnTicks: 3
   slowModifier: 0.7
   footstepSounds:
-  - {fileID: 8300000, guid: fc867e10b3f020b4ab382b086d906d51, type: 3}
-  - {fileID: 8300000, guid: 55fa9662dc351b84e99325d261fec5c4, type: 3}
-  - {fileID: 8300000, guid: 62749b52b8720304ebb53162d72b6058, type: 3}
   - {fileID: 8300000, guid: 9ea01f73949b67c49ab026104f45a34a, type: 3}
-  - {fileID: 8300000, guid: 174725902ad0d594fa93531aaaa0220c, type: 3}
+  - {fileID: 8300000, guid: 55fa9662dc351b84e99325d261fec5c4, type: 3}
+  - {fileID: 8300000, guid: fc867e10b3f020b4ab382b086d906d51, type: 3}
   - {fileID: 8300000, guid: f3999f0ceae5bbd428bf10054879d53d, type: 3}
+  - {fileID: 8300000, guid: 174725902ad0d594fa93531aaaa0220c, type: 3}
+  - {fileID: 8300000, guid: 62749b52b8720304ebb53162d72b6058, type: 3}
   jumpSounds:
   - {fileID: 8300000, guid: b389bd365ba97b445844f9948211ee1c, type: 3}
   - {fileID: 8300000, guid: b7bdcf32084f25e4593b0a0859e04dfe, type: 3}

@@ -252,9 +252,11 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (enemyTransform.localScale.x > 0) {
-            enemy.flipCanvasRight.Invoke();
+            enemy.health.flipHealthBarRight.Invoke();
+            enemy.health.flipReceivedDamageCanvasRight.Invoke();
         } else if (enemyTransform.localScale.x < 0) {
-            enemy.flipCanvasLeft.Invoke();
+            enemy.health.flipHealthBarLeft.Invoke();
+            enemy.health.flipReceivedDamageCanvasLeft.Invoke();
         }
     }
 }

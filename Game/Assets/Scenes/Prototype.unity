@@ -817,6 +817,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6881951546314091578, guid: 334a8afffdf84df4aaceabda4dd1cf8f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 12.300049
+      objectReference: {fileID: 0}
     - target: {fileID: 7533155762406851988, guid: 334a8afffdf84df4aaceabda4dd1cf8f,
         type: 3}
       propertyPath: player
@@ -1044,7 +1049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0399208, y: -1.6963072, z: -10}
+  m_LocalPosition: {x: -4.6761923, y: -1.6963072, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 805996807}
@@ -1922,6 +1927,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2673789423358196501, guid: 18caadd3e417305488e0ae374e3e1fe2,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18caadd3e417305488e0ae374e3e1fe2, type: 3}
 --- !u!1 &1167994489
@@ -2304,7 +2314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222261927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.850817, y: -6.585, z: -10}
+  m_LocalPosition: {x: -11.668952, y: -6.585, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1438195499}
@@ -3220,6 +3230,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5996427777916963295, guid: f32b759196b9d9649b8717f34d04d648,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7139221802820404404, guid: f32b759196b9d9649b8717f34d04d648,
         type: 3}
       propertyPath: m_PlayOnAwake
@@ -3332,6 +3347,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2565762488231972269, guid: 3a9a6c3c6b7d2d949bae524315c13d48,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2565762488447485277, guid: 3a9a6c3c6b7d2d949bae524315c13d48,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3577,6 +3597,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175408596882638146, guid: 1e6e496428ce17a44ae54326361e0210,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 175408597436177285, guid: 1e6e496428ce17a44ae54326361e0210,
+        type: 3}
+      propertyPath: maxHealth
+      value: 110
+      objectReference: {fileID: 0}
     - target: {fileID: 175408597436177289, guid: 1e6e496428ce17a44ae54326361e0210,
         type: 3}
       propertyPath: m_Name
@@ -4478,5 +4508,15 @@ PrefabInstance:
       propertyPath: swordImage
       value: 
       objectReference: {fileID: 1548460977}
+    - target: {fileID: 5093239861235621585, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785374276988880891, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20869efc35eb41840a78baf07c0c8959, type: 3}
