@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using TMPro;
 using System.Collections;
+using System;
 
 [System.Serializable]
 public class SliderChangeEvent : UnityEvent<bool> { }
@@ -41,6 +42,7 @@ public class Health : MonoBehaviour {
 
     public void TakeDamage(double damage) {
         currentHealth -= damage;
+        Math.Round(currentHealth, 0.00);
         unitAnimator.SetTrigger("Hurt");
         StartCoroutine(ShowDamageText(damage));
         if (currentHealth < 0) currentHealth = 0;

@@ -44,8 +44,13 @@ public class Sensor_Bandit : MonoBehaviour {
         m_ColCount--;
     }
 
-    public void IncreaseColCount()
+    public void ZeroColCount()
     {
-        m_ColCount++;
+        m_ColCount = 0;
+    }
+
+    public int GetColCount()
+    {
+        return m_ColCount;
     }
 }

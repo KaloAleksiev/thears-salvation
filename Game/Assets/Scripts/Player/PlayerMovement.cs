@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     public Rigidbody2D rb; //used to add velocity and forces to the player
     public Transform feet;
     public LayerMask groundLayer;
-    private Sensor_Bandit m_groundSensor;
+    public Sensor_Bandit m_groundSensor;
 
     [Header("Horizontal Movement")]
     public float defaultMovementSpeed = 10f;
@@ -57,9 +57,6 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float m_StepInterval;
     private float m_NextStep;
     private float m_StepCycle;
-
-    private CrumblingPlatform crumblingPlatform;
-    private TimedPlatform timedPlatform;
 
     private void Start()
     {
@@ -140,17 +137,23 @@ public class PlayerMovement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        CrumblingPlatform platform = collider.GetComponent<CrumblingPlatform>();
-        if (platform)
+        CrumblingPlatform crumblingPlatform = collider.GetComponent<CrumblingPlatform>();
+        TimedPlatform timedPlatform = collider.GetComponent<TimedPlatform>();
+
+        if (crumblingPlatform)
         {
-            platform.StartTimer();
-            StartCoroutine("SetGrounded");
+            crumblingPlatform.StartTimer();
+            StartCoroutine("SetGrounded", crumblingPlatform.disappearTime);
+        }
+        else if (timedPlatform)
+        {
+            StartCoroutine("SetGrounded", timedPlatform.enabledTime);
         }
     }
 
-    private IEnumerator SetGrounded()
+    private IEnumerator SetGrounded(float time)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(time);
         m_groundSensor.ReduceColCount();
     }
 

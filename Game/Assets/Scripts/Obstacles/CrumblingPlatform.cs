@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 public class CrumblingPlatform : MonoBehaviour {
     public float resetTime = 2;
     public float disappearTime = 1;
-    public Player player;
 
     public void StartTimer()
     {
@@ -19,8 +18,8 @@ public class CrumblingPlatform : MonoBehaviour {
         yield return StartCoroutine(BreakPlatform(gameObject));
     }
 
-    private IEnumerator BreakPlatform(GameObject platform) {
-
+    private IEnumerator BreakPlatform(GameObject platform) 
+    {
         platform.GetComponent<TilemapCollider2D>().enabled = false;
         platform.GetComponent<TilemapRenderer>().enabled = false;
 
