@@ -250,5 +250,11 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
+
+        if (enemyTransform.localScale.x > 0) {
+            enemy.flipCanvasRight.Invoke();
+        } else if (enemyTransform.localScale.x < 0) {
+            enemy.flipCanvasLeft.Invoke();
+        }
     }
 }

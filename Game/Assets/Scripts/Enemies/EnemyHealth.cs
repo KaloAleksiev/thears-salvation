@@ -10,15 +10,17 @@ public class EnemyHealth : MonoBehaviour {
     public float disableTime = 2;
 
     [SerializeField] private Canvas enemyCanvas;
+    Vector3 enemyCanvasScale;
 
     private void Start() {
         enemy.flipCanvasRight.AddListener(FlipCanvasRight);
-        enemy.flipCanvasRight.AddListener(FlipCanvasLeft);
+        enemy.flipCanvasLeft.AddListener(FlipCanvasLeft);
+        enemyCanvasScale = enemyCanvas.transform.localScale;
     }
 
     private void OnDestroy() {
         enemy.flipCanvasRight.RemoveListener(FlipCanvasRight);
-        enemy.flipCanvasRight.RemoveListener(FlipCanvasLeft);
+        enemy.flipCanvasLeft.RemoveListener(FlipCanvasLeft);
     }
 
     public void GetDamaged(double damage)
@@ -26,6 +28,7 @@ public class EnemyHealth : MonoBehaviour {
         if (health.currentHealth > 0)
         {
             health.TakeDamage(damage);
+            health.receivedDamageAnimator.SetTrigger("Enemy");
 
             if (health.currentHealth == 0)
             {
@@ -73,12 +76,10 @@ public class EnemyHealth : MonoBehaviour {
     }
 
     private void FlipCanvasRight() {
-        Vector3 enemyCanvasScale = enemyCanvas.transform.localScale;
-        enemyCanvas.transform.localScale = new Vector3(-enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
+        enemyCanvas.transform.localScale = new Vector3(enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
     }
 
     private void FlipCanvasLeft() {
-        Vector3 enemyCanvasScale = enemyCanvas.transform.localScale;
-        enemyCanvas.transform.localScale = new Vector3(enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
+        enemyCanvas.transform.localScale = new Vector3(-enemyCanvasScale.x, enemyCanvasScale.y, enemyCanvasScale.z);
     }
 }
