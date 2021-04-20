@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
         {
             if (knockBackObstacle.dealDamage) Damage(knockBackObstacle.damage);
             if (knockBackObstacle.makeInvincible) StartCoroutine(BecomeInvincible());
-            player.knockBack.Invoke(collider.transform); //knock back player from the collided object
+            if (knockBackObstacle.doKnockback) player.knockBack.Invoke(collider.transform); //knock back player from the collided object
         }
     }
 

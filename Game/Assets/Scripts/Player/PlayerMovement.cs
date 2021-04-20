@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private int jumpCounter = 0;
     private float jumpCoolDown;
-    private bool isGrounded = false;
+    public bool isGrounded = false;
 
     private RaycastHit2D isWallHit; //used to check if the character has collided with a wall horizontally
     private bool isWallSliding = false;
@@ -57,6 +57,9 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float m_StepInterval;
     private float m_NextStep;
     private float m_StepCycle;
+
+    private CrumblingPlatform crumblingPlatform;
+    private TimedPlatform timedPlatform;
 
     private void Start()
     {
@@ -104,6 +107,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             isGrounded = false;
             player.setBoolAnimator.Invoke("Grounded", isGrounded);
+            StopCoroutine("SetGrounded");
         }
 
         //Set AirSpeed in animator
@@ -132,6 +136,22 @@ public class PlayerMovement : MonoBehaviour {
         m_NextStep = m_StepCycle + m_StepInterval;
 
         player.playFootstepSound.Invoke();
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        CrumblingPlatform platform = collider.GetComponent<CrumblingPlatform>();
+        if (platform)
+        {
+            platform.StartTimer();
+            StartCoroutine("SetGrounded");
+        }
+    }
+
+    private IEnumerator SetGrounded()
+    {
+        yield return new WaitForSeconds(1);
+        m_groundSensor.ReduceColCount();
     }
 
     private void CheckIfBelowGround()

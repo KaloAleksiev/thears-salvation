@@ -38,4 +38,14 @@ public class Sensor_Bandit : MonoBehaviour {
     {
         m_DisableTimer = duration;
     }
+
+    public void ReduceColCount()
+    {
+        m_ColCount--;
+    }
+
+    public void IncreaseColCount()
+    {
+        m_ColCount++;
+    }
 }

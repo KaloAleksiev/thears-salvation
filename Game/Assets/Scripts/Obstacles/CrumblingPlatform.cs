@@ -1,27 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CrumblingPlatform : MonoBehaviour {
-    /*private void Update() {
+    public float resetTime = 2;
+    public float disappearTime = 1;
+    public Player player;
+
+    public void StartTimer()
+    {
         StartCoroutine("StartIdleBeforeDisappear");
     }
 
-    IEnumerator StartIdleBeforeDisappear() {
-        for (float elapsedTime = 0f; elapsedTime < 2; elapsedTime += 1) {
-            yield return new WaitForSeconds(1);
-        }
+    public IEnumerator StartIdleBeforeDisappear() {
+        yield return new WaitForSeconds(disappearTime);
 
-        yield return StartCoroutine(BreakPlatform(gameObject, 2f));
+        yield return StartCoroutine(BreakPlatform(gameObject));
     }
 
-    private IEnumerator BreakPlatform(GameObject platform, float resetTime) {
-        platform.GetComponent<BoxCollider2D>().enabled = false;
-        platform.GetComponent<SpriteRenderer>().enabled = false;
+    private IEnumerator BreakPlatform(GameObject platform) {
+
+        platform.GetComponent<TilemapCollider2D>().enabled = false;
+        platform.GetComponent<TilemapRenderer>().enabled = false;
 
         yield return new WaitForSeconds(resetTime);
 
-        platform.GetComponent<BoxCollider2D>().enabled = true;
-        platform.GetComponent<SpriteRenderer>().enabled = true;
-    }*/
+        platform.GetComponent<TilemapCollider2D>().enabled = true;
+        platform.GetComponent<TilemapRenderer>().enabled = true;
+    }
 }

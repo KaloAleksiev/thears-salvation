@@ -292,10 +292,16 @@ MonoBehaviour:
       m_Calls: []
   unitAnimator: {fileID: 2168007781400364166}
   receivedDamageCanvas: {fileID: 8724140835324180634}
-  flipCanvasRight:
+  flipHealthBarRight:
     m_PersistentCalls:
       m_Calls: []
-  flipCanvasLeft:
+  flipHealthBarLeft:
+    m_PersistentCalls:
+      m_Calls: []
+  flipReceivedDamageCanvasRight:
+    m_PersistentCalls:
+      m_Calls: []
+  flipReceivedDamageCanvasLeft:
     m_PersistentCalls:
       m_Calls: []
   receivedDamageText: {fileID: 4330831433723012518, guid: 9e70a22baa97cf44482b2f96daf24b41,
@@ -1305,7 +1311,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6561881365355330508}
   - component: {fileID: 61543252712419913}
-  - component: {fileID: 8941000198218008602}
   m_Layer: 8
   m_Name: TopCollider
   m_TagString: Untagged
@@ -1337,7 +1342,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: c595784cbc1c2e94cadb33e8627109fe, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1355,21 +1360,6 @@ PolygonCollider2D:
     - - {x: 0.3311583, y: 1.1262413}
       - {x: -0.02766817, y: 1.3151854}
       - {x: -0.26371127, y: 1.1262414}
---- !u!114 &8941000198218008602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3092093044367599494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e251f391b97f342bf249a370831bbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  dealDamage: 0
-  makeInvincible: 0
 --- !u!1 &4696084552085539340
 GameObject:
   m_ObjectHideFlags: 0

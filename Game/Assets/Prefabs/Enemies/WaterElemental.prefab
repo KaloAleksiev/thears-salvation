@@ -400,10 +400,16 @@ MonoBehaviour:
       m_Calls: []
   unitAnimator: {fileID: 557086042534252605}
   receivedDamageCanvas: {fileID: 4126482047299037369}
-  flipCanvasRight:
+  flipHealthBarRight:
     m_PersistentCalls:
       m_Calls: []
-  flipCanvasLeft:
+  flipHealthBarLeft:
+    m_PersistentCalls:
+      m_Calls: []
+  flipReceivedDamageCanvasRight:
+    m_PersistentCalls:
+      m_Calls: []
+  flipReceivedDamageCanvasLeft:
     m_PersistentCalls:
       m_Calls: []
   receivedDamageText: {fileID: 4330831433723012518, guid: 9e70a22baa97cf44482b2f96daf24b41,
@@ -1536,8 +1542,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7019417477392602352}
   - component: {fileID: 5695010158732421827}
-  - component: {fileID: 8170642284250491158}
-  - component: {fileID: 2049886429139750369}
   m_Layer: 8
   m_Name: TopCollider
   m_TagString: Untagged
@@ -1569,7 +1573,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: c595784cbc1c2e94cadb33e8627109fe, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1587,44 +1591,3 @@ PolygonCollider2D:
     - - {x: 0.2619697, y: 0.13446851}
       - {x: 0.091247596, y: 0.20858397}
       - {x: -0.13029636, y: 0.13446756}
---- !u!114 &8170642284250491158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5033790392675777096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e251f391b97f342bf249a370831bbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  dealDamage: 0
-  makeInvincible: 0
---- !u!61 &2049886429139750369
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5033790392675777096}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: c595784cbc1c2e94cadb33e8627109fe, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.065836206, y: -0.07087438}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.72, y: 0.57}
-    newSize: {x: 1.28, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3922669, y: 0.41068587}
-  m_EdgeRadius: 0

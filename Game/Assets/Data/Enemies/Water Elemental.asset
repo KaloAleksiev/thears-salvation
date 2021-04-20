@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Water Elemental
   health: 250
-  damage: 50
+  damage: 45
   footstepSounds:
   - {fileID: 8300000, guid: bc31718bd7039a14ba659d7a95918984, type: 3}
   - {fileID: 8300000, guid: 9d3f0d22045bde74a8a41b8d8b91d907, type: 3}

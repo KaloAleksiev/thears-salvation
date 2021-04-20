@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject {
     [SerializeField] private Sword activeSword;
     [SerializeField] private int burnTicks = 3;
     [SerializeField] private double slowModifier = 0.5;
+    [SerializeField] private int levelReached = 1;
     [SerializeField] private AudioClip[] footstepSounds;
     [SerializeField] private AudioClip[] jumpSounds;
     [SerializeField] private AudioClip[] landSounds;
@@ -25,6 +26,7 @@ public class PlayerData : ScriptableObject {
     public Sword ActiveSword { get => activeSword; set => activeSword = value; }
     public int BurnTicks { get => burnTicks; set => burnTicks = value; }
     public double SlowModifier { get => slowModifier; set => slowModifier = value; }
+    public int LevelReached { get => levelReached; set => levelReached = value; }
     public AudioClip[] FootstepSounds { get => footstepSounds; set => footstepSounds = value; }
     public AudioClip[] JumpSounds { get => jumpSounds; set => jumpSounds = value; }
     public AudioClip[] LandSounds { get => landSounds; set => landSounds = value; }
