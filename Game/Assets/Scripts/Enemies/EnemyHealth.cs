@@ -54,13 +54,13 @@ public class EnemyHealth : MonoBehaviour {
         yield return new WaitForSeconds(disableTime);
         gameObject.GetComponent<SpriteRenderer>().enabled = appear;
 
-        if (items.Length == 4)
+        if (items[0].GetComponent<PickUp>())
         {
             GameObject item = items[Random.Range(0, items.Length)];
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             Instantiate(item, spawnPoint, Quaternion.identity);
         }
-        else if (items.Length == 1)
+        else if (items[0].GetComponent<Collectible>())
         {
             GameObject item = items[0];
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);

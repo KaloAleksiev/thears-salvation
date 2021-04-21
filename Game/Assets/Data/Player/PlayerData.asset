@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1946be5a6acd88d4086cf42117e28dba, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 125
+  currentHealth: 100
+  maxHealth: 100
   damageMultiplier: 1
-  soulOrbs: 3
+  soulOrbs: 0
   defenseMultiplier: 1
-  activeSword: {fileID: 11400000, guid: 02ee3efa4e198064c8cac4d4d08e0b44, type: 2}
+  activeSword: {fileID: 11400000, guid: 99013a66e36ff4a49a31e59a8c19a903, type: 2}
   burnTicks: 3
   slowModifier: 0.7
+  levelReached: 1
   footstepSounds:
   - {fileID: 8300000, guid: 9ea01f73949b67c49ab026104f45a34a, type: 3}
   - {fileID: 8300000, guid: 55fa9662dc351b84e99325d261fec5c4, type: 3}

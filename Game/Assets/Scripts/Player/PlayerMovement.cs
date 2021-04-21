@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
     public Player player;
@@ -139,6 +140,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         CrumblingPlatform crumblingPlatform = collider.GetComponent<CrumblingPlatform>();
         TimedPlatform timedPlatform = collider.GetComponent<TimedPlatform>();
+        LevelLoader levelLoader = collider.GetComponent<LevelLoader>();
 
         if (crumblingPlatform)
         {
@@ -148,6 +150,10 @@ public class PlayerMovement : MonoBehaviour {
         else if (timedPlatform)
         {
             StartCoroutine("SetGrounded", timedPlatform.enabledTime);
+        }
+        else if (levelLoader)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
