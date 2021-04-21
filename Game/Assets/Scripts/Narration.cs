@@ -17,7 +17,9 @@ public class Narration : MonoBehaviour {
 
     private void Update() {
         if (Input.anyKeyDown) {
-            FreezeGame(false);
+            if (!InGameMenus.GameIsPaused) {
+                FreezeGame(false);
+            }
         }
     }
 
