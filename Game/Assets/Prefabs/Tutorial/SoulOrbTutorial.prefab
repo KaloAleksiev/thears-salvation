@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2154775151042295550}
   - component: {fileID: 4162898054060098619}
   - component: {fileID: 5853109268796719537}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SoulOrbTutorial
   m_TagString: Soul Orb
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 6558698693355196123}
   - component: {fileID: 7078099403068564642}
   - component: {fileID: 3338445026893442711}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}

@@ -43,11 +43,13 @@ public class Narration : MonoBehaviour {
     private void FreezeGame(bool isGameFrozen) {
         if (isGameFrozen) {
             Time.timeScale = 0f;
+            Cursor.visible = true;
             player.GetComponent<Animator>().enabled = false;
             player.playerMovement.enabled = false;
             player.playerCombat.enabled = false;
         } else {
             Time.timeScale = 1f;
+            Cursor.visible = false;
             player.GetComponent<Animator>().enabled = true;
             player.playerMovement.enabled = true;
             player.playerCombat.enabled = true;

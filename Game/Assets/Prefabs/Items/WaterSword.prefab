@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5989123125839157237}
   - component: {fileID: 4285274575705522271}
   - component: {fileID: 5666271819682244896}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: WaterSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}

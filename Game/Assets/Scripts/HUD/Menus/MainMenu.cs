@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour {
     [SerializeField] private AudioMixer masterVolume;
 
     private void Start() {
+        Cursor.visible = true;
         if (settings.ResolutionIndex == -1) {
             SetCurrentResolutionIndex();
         }
@@ -21,6 +22,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void PlayGame() {
+        Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

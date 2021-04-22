@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 78962375497742608}
   - component: {fileID: 1712853073595775769}
   - component: {fileID: 4818563628011419898}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CircleCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f2ed27d6c1c3ccc48959bcca269d88f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
   feet: {fileID: 8804035078858691526}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_groundSensor: {fileID: 7071786560123899708}
   defaultMovementSpeed: 10
   movementSpeed: 10
@@ -1425,7 +1425,7 @@ GameObject:
   - component: {fileID: 7184207035252886676}
   - component: {fileID: 7071786560123899708}
   - component: {fileID: 7162485745202649792}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundSensor
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 3957068217409717835}
   - component: {fileID: 8633835851961312404}
   - component: {fileID: 236701118003621191}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PolygonCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

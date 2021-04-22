@@ -54,11 +54,13 @@ public class InGameMenus : MonoBehaviour {
 
     private void FreezeGame(bool isGameFrozen) {
         if (isGameFrozen) {
+            Cursor.visible = true;
             Time.timeScale = 0f;
             hud.player.GetComponent<Animator>().enabled = false;
             hud.player.playerMovement.enabled = false;
             hud.player.playerCombat.enabled = false;
         } else {
+            Cursor.visible = false;
             Time.timeScale = 1f;
             hud.player.GetComponent<Animator>().enabled = true;
             hud.player.playerMovement.enabled = true;

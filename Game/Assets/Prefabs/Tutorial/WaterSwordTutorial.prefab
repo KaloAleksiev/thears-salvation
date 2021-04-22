@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 31557848871782504}
   - component: {fileID: 31557848871782511}
   - component: {fileID: 31557848871782510}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 460532899510310435}
   - component: {fileID: 7926860354883797385}
   - component: {fileID: 2007237408373762294}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: WaterSwordTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}

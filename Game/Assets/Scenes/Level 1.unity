@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 305757145}
   - component: {fileID: 305757144}
   - component: {fileID: 305757143}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6294,7 +6294,7 @@ GameObject:
   - component: {fileID: 972472192}
   - component: {fileID: 972472191}
   - component: {fileID: 972472190}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7188,7 +7188,7 @@ GameObject:
   - component: {fileID: 1007776830}
   - component: {fileID: 1007776829}
   - component: {fileID: 1007776828}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: End of Level
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -7497,7 +7497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIeypDEi8agIAABAFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzg1jvgzurXUI6SEfU9rJxRdhr7EGWfLoI0Ay/PeuZBk7lAti3+7qvbcrPgkTuoHcSLVRrHiSBZDvI+LO5NuoBx/hRPdSbNkHdDlvrDCVS6I+5zc1TGJ84sq0rMEolv8Qe+6SIwxawUqp6nWxh1RqozFcUq4BISWNqxYY+hyRE37dJa7kjKfp0p0+8JREowsecxAGVJ8aj+dJkqxWizhUTFbjxH3iaSicjWfJch7PZ+u7KPY9rMg5rRsonKC+1WoWWizaNIFSQ4aTlUvOmQ48iTk33oeUNtqiSkwoGEXdnpzLr4DtK+M0DItfylKDCaYoer5nCu1ru5KfsvW0pvrQ8nqn3Lp7poFT2/TpP/xu4uFSyfqxu3cSuTtMxfLDb3rOqTYD04fh+6/ErThSfqA7Dm8ViGe5UdKKAkGjrCu1Gqb3/c+rtLSC/NDHW6o3Qdv0fncz7ibsNFy8+lPKWb1z0HjeBrZcer/9YoDCyfxCwn5tdGiBUcfir4Y/dD/crwA8MKUNQkGlcPR20iqXStbeM6fGmlQqAT4cSDcgKDfnV2xjbkd4gw2uvUEeqHtJ4fKAdQ/kpsSH+/wouoFe5fE6LF3J4xPo6sUazgT0pB3wjD6lUoh2w4aedGVbq0qaD8r2lhVfV4tMlnSxKGKY0ijaJUDxGdF4vpvuZrAslwlW+91jAnVS/toSDfbg1ETfXOCedX8wo42ijd/2QtHjhn3UcmA5E6Xc5gpAvLQdrsRB4SX4Kot1wdCgLRjDhJ83+cwIl/kBiuzaKPNK1yejaNZ3yUjD3qVxkYyk/h8lIxdy+QdQSwMEFAAACAgAAAgh7Lf2BK1tAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJKheaKpaYpZqlGigUGSZWqiroFZoplJklGScap5mrllcqpSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7KkMSLxqAgAAEAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7Lf2BK1tAAAAeAAAAAkAJAAAAAAAAAAAAAAAtwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABvAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIezq71fubgIAABIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzg1j82Fwb61DSA+ETGgnF1+EtcYaZMkjyQGS4b93JdvYpVwQ+3ZX771d8UW4NBVkVum15myjGJDvI+LO5NuoB5/hTA9K7vgndDnvnNnCJVGf80YtVxgPXZlRJVjNsx/yIFxygMFa8lzpcsUOkChjDYZzKgwgpJV11RJDXyNyxq+H2JVc8DRZuNMnnuJgdMVjBtKC7lOj8SyO4+VyHrUV4XIcu080aQun42m8mEWz6eohiHyPWmaClhUwJ6hvtZy2LeZNmkSpbYaTlSkhuGl5EnupvA8JrUyNKjGBcYq6Pblw7HoVwA+FdSqG5ds8N2BbWzS9PHKNBjZ9yU/VuFpSc2yYfVBRu5vm4cSzappu/sMfQg/nWpXP3b1h4O6wBc+Ob/SSUWMHtg/DjwPq3qATFUe6F/BegHxRa61qyRC0unaltYHJY//zJi0pIDv28YbqXbCuese7KXczdhquXv05EbzcO2g8awI7obzjfjVA42x+IWG/OKZtgVHH4o+B3/Qw3LAWeOLaWIRaldLR26tau1Sy8p45NbVNlJbgwy3pCiQV9vKKbez9CO+wwbV3yBN1b6m9vMW6J3JX4sN9fhDcQa/qdBuWKdRpA6bY1lZwCT1pB7ygT4mSstmwoSdd2a7WOc0GZYeas39Xi4QLOp+zCCY0CPYxUHxINJrtJ/spLPJFjNV+97hEnVS8NkRbe3Bqsm8ucc+6v5jRWtPKbzvT9LTmn6UaWM5lrnaZBpDbpsONOGi8BN8lWzGOBu3AWi79vMlXSoTKjsDSW6PUK12draZp3yUlFf9Q1kVSkvj/lJRcyfUvUEsDBBQAAAgIAAAIIey39gStbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrSSoXmiqWmKWapRooFBkmVqoq6BWaKZSZJRknGqeZq5ZXKqUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIezq71fubgIAABIFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIey39gStbQAAAHgAAAAJACQAAAAAAAAAAAAAALsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -7889,7 +7889,7 @@ GameObject:
   - component: {fileID: 1388916170}
   - component: {fileID: 1388916174}
   - component: {fileID: 1388916173}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Cosmetics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18731,7 +18731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541986369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.97, y: -4.81, z: 0}
+  m_LocalPosition: {x: -26.8, y: -4.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19136,7 +19136,7 @@ GameObject:
   - component: {fileID: 1712495530}
   - component: {fileID: 1712495537}
   - component: {fileID: 1712495536}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Timed (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19740,7 +19740,7 @@ GameObject:
   - component: {fileID: 1723740359}
   - component: {fileID: 1723740358}
   - component: {fileID: 1723740357}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Crumbling (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20857,7 +20857,7 @@ GameObject:
   - component: {fileID: 1854909736}
   - component: {fileID: 1854909735}
   - component: {fileID: 1854909734}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Crumbling (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21714,7 +21714,7 @@ GameObject:
   - component: {fileID: 1942247843}
   - component: {fileID: 1942247842}
   - component: {fileID: 1942247841}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Crumbling (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23034,13 +23034,18 @@ PrefabInstance:
     - target: {fileID: 4818563628011419897, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4818563628011419898, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
       propertyPath: swordImage
       value: 
       objectReference: {fileID: 1548460977}
+    - target: {fileID: 7011643138421087388, guid: 20869efc35eb41840a78baf07c0c8959,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7182492402645627498, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
       propertyPath: m_RootOrder
@@ -23109,12 +23114,12 @@ PrefabInstance:
     - target: {fileID: 7186235380191091902, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8633835851961312426, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8804035078858691527, guid: 20869efc35eb41840a78baf07c0c8959,
         type: 3}
@@ -23221,6 +23226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crumbling
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632673528019742901, guid: ec3d113ed3d1302468526a3dc9cae5cf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3632673528019742908, guid: ec3d113ed3d1302468526a3dc9cae5cf,
         type: 3}
@@ -24813,6 +24823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Timed
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330044702976821290, guid: a90408a87feb83148b77e2bbbbe2accb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4330044702976821297, guid: a90408a87feb83148b77e2bbbbe2accb,
         type: 3}

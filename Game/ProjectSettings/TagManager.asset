@@ -17,11 +17,11 @@ TagManager:
   - UI
   - 
   - 
+  - Player
   - Ground
-  - 
   - CameraBounds
   - Enemies
-  - Player
+  - Items
   - Door
   - 
   - 
