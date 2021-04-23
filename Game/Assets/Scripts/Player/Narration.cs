@@ -17,11 +17,11 @@ public class Narration : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.anyKeyDown) {
+        /*if (Input.anyKeyDown) {
             if (!InGameMenus.GameIsPaused) {
                 FreezeGame(false);
             }
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
@@ -29,7 +29,7 @@ public class Narration : MonoBehaviour {
 
         if (narrationElement) {
             if (!textArrayActive[narrationElement.number]) {
-                FreezeGame(true);
+                //FreezeGame(true);
 
                 TextMeshProUGUI text = textArray[narrationElement.number];
                 text.gameObject.SetActive(true);
