@@ -17,11 +17,11 @@ public class Narration : MonoBehaviour {
     }
 
     private void Update() {
-        /*if (Input.anyKeyDown) {
+        if (Input.anyKeyDown) {
             if (!InGameMenus.GameIsPaused) {
                 FreezeGame(false);
             }
-        }*/
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
@@ -29,7 +29,7 @@ public class Narration : MonoBehaviour {
 
         if (narrationElement) {
             if (!textArrayActive[narrationElement.number]) {
-                //FreezeGame(true);
+                FreezeGame(true);
 
                 TextMeshProUGUI text = textArray[narrationElement.number];
                 text.gameObject.SetActive(true);
@@ -49,15 +49,9 @@ public class Narration : MonoBehaviour {
         if (isGameFrozen) {
             Time.timeScale = 0f;
             Cursor.visible = true;
-            player.GetComponent<Animator>().enabled = false;
-            player.playerMovement.enabled = false;
-            player.playerCombat.enabled = false;
         } else {
             Time.timeScale = 1f;
             Cursor.visible = false;
-            player.GetComponent<Animator>().enabled = true;
-            player.playerMovement.enabled = true;
-            player.playerCombat.enabled = true;
         }
     }
 }
