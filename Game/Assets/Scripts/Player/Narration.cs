@@ -6,6 +6,7 @@ public class Narration : MonoBehaviour {
     public TextMeshProUGUI[] textArray;
 
     public bool[] textArrayActive;
+    private SpriteRenderer sr;
 
     private void Start() {
         textArrayActive = new bool[textArray.Length];
@@ -34,8 +35,12 @@ public class Narration : MonoBehaviour {
                 text.gameObject.SetActive(true);
                 text.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 4, gameObject.transform.position.z);
 
-                if (narrationElement.number > 0) textArray[narrationElement.number - 1].gameObject.SetActive(false);
+                if (narrationElement.number > 0) { 
+                    textArray[narrationElement.number - 1].gameObject.SetActive(false);
+                    if (sr) sr.enabled = false;
+                }
                 textArrayActive[narrationElement.number] = true;
+                sr = collider.GetComponent<SpriteRenderer>();
             }
         }
     }
