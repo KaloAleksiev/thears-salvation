@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour {
 
     private void Reset() {
         //reset character position
-        player.transform.position = respawnPoint.position;
+        player.transform.position = player.checkpoint.gameObject.transform.position;
         player.playerMovement.RotateRight();
 
         player.resetPlayerHealth.Invoke();

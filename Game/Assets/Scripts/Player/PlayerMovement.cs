@@ -141,6 +141,7 @@ public class PlayerMovement : MonoBehaviour {
         CrumblingPlatform crumblingPlatform = collider.GetComponent<CrumblingPlatform>();
         TimedPlatform timedPlatform = collider.GetComponent<TimedPlatform>();
         LevelLoader levelLoader = collider.GetComponent<LevelLoader>();
+        Checkpoint checkpoint = collider.GetComponent<Checkpoint>();
 
         if (crumblingPlatform)
         {
@@ -154,6 +155,9 @@ public class PlayerMovement : MonoBehaviour {
         else if (levelLoader)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else if (checkpoint) {
+            player.checkpoint = checkpoint;
         }
     }
 

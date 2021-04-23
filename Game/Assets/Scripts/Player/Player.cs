@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     public PlayerHealth playerHealth;
     public PlayerCombat playerCombat;
     public Health health;
+    public Checkpoint checkpoint;
 
     //movement events
     public KnockBackEvent knockBack;
